@@ -49,6 +49,9 @@
     "zustand": "^5.0.4"
   },
   "scripts": {
+    "test": "node --test tests/*.test.js",
+    "preview": "vite preview --host 127.0.0.1",
+    "build:pages": "node scripts/build-pages.mjs",
     "start": "vite",
     "build": "vite build",
     "translate:build": "node DownloadTranslations.js && vite build",

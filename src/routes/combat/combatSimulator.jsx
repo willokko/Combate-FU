@@ -27,7 +27,7 @@ import { globalConfirm } from "../../utility/globalConfirm";
 import { useNavigate } from "react-router-dom";
 import { useCombatSimSettingsStore } from "../../stores/combatSimSettingsStore";
 import GeneralNotesDialog from "../../components/combatSim/GeneralNotesDialog";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "../../data/hooks.js";
 import { auth, firestore } from "../../firebase";
 import { SignIn } from "../../components/auth";
 import {
@@ -38,9 +38,9 @@ import {
   setDoc,
   getDoc,
   getDocs,
-} from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+} from "../../data/firestore.js";
+import { useCollectionData } from "../../data/hooks.js";
+import { useDocumentData } from "../../data/hooks.js";
 
 export default function CombatSimulator() {
   const [user, loading, error] = useAuthState(auth);
@@ -1261,7 +1261,7 @@ const CombatSim = ({ user, setIsDirty, isDirty }) => {
     // Navigate to the NPC editor at /npc-gallery/:npcId
     navigate(`/npc-gallery/${selectedNPC.id}`, {
       state: {
-        from: `/combat-sim/${encounter.id}`,
+        from: `/legacy-combat-sim/${encounter.id}`,
       },
     });
   };

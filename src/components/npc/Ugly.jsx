@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "../../data/firestore.js";
 
 import { Button, TextField } from "@mui/material";
 

@@ -5,8 +5,8 @@ import {
   doc,
   addDoc,
   deleteDoc,
-} from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+} from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
 import React, { useState, useRef } from "react";
 import { firestore } from "../../firebase";
 import { auth } from "../../firebase";
@@ -46,13 +46,15 @@ import {
   Star,
   BugReport,
 } from "@mui/icons-material";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useCollectionData } from "../../data/hooks.js";
 import { useTranslate } from "../../translation/translate";
 import PlayerCardGallery from "../../components/player/playerSheet/PlayerCardGallery";
 // import { testUsers, moderators } from "../../libs/userGroups";
 import Export from "../../components/Export";
 import SearchIcon from "@mui/icons-material/Search";
 import { validateCharacter } from "../../utility/validateJson";
+import ParticipantPicker from '../../components/combatManager/ParticipantPicker';
+import { remoteEnabled } from '../../firebase';
 
 export default function PlayerGallery() {
   const { t } = useTranslate();
@@ -77,6 +79,7 @@ export default function PlayerGallery() {
 }
 
 function Personal({ user }) {
+  const [localImport, setLocalImport] = useState(false);
   const { t } = useTranslate();
   const [name, setName] = useState("");
   const [direction, setDirection] = useState("ascending");
@@ -282,7 +285,7 @@ function Personal({ user }) {
       if (window.confirm("Are you sure you want to copy?")) {
         addDoc(ref, data)
           .then(function (docRef) {
-            window.location.href = `/pc-gallery/${docRef.id}`;
+            navigate(`/pc-gallery/${docRef.id}`);
           })
           .catch(function (error) {
             console.error("Error adding document: ", error);
@@ -324,6 +327,7 @@ function Personal({ user }) {
 
   return (
     <>
+      {localImport && <ParticipantPicker open libraryOnly onClose={() => setLocalImport(false)} />}
       <Alert
         icon={<Star />}
         severity="success"
@@ -451,7 +455,7 @@ function Personal({ user }) {
               <Button
                 variant="outlined"
                 fullWidth
-                onClick={() => fileInputRef.current.click()}
+                onClick={() => remoteEnabled ? fileInputRef.current.click() : setLocalImport(true)}
               >
                 {t("Add PC from JSON")}
               </Button>

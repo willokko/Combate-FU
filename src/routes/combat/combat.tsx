@@ -16,9 +16,9 @@ import {
 } from "@mui/material";
 import { Download, AddCircle } from "@mui/icons-material";
 import { useRef, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { collection, orderBy, query, where } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useAuthState } from "../../data/hooks.js";
+import { collection, orderBy, query, where } from "../../data/firestore.js";
+import { useCollectionData } from "../../data/hooks.js";
 import { User } from "firebase/auth";
 
 import { SignIn } from "../../components/auth";

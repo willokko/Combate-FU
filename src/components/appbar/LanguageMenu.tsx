@@ -16,7 +16,7 @@ const LanguageMenu = () => {
   };
 
   const selectedLanguage =
-    useRef(localStorage.getItem("selectedLanguage")).current ?? "en";
+    useRef(localStorage.getItem("selectedLanguage")).current ?? "pt-BR";
 
   const handleLanguageChange = async (languageCode: string) => {
     await localStorage.setItem("selectedLanguage", languageCode);

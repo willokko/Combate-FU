@@ -3,6 +3,8 @@ import useDownloadJSON from "../hooks/useDownloadJSON";
 import { Code } from "@mui/icons-material";
 import { Tooltip, IconButton, Menu, MenuItem, Snackbar } from "@mui/material";
 import { useTranslate } from "../translation/translate";
+import { safeDatabase } from '../data/localStore';
+import { remoteEnabled } from '../firebase';
 
 type Props = {
   name?: string;
@@ -17,7 +19,14 @@ enum ExportAction {
 
 function Export({ name = "", dataType, data = {} }: Props) {
   const { t } = useTranslate();
-  const [downloadJSON, copyToClipboard] = useDownloadJSON(name, { ...data, dataType });
+  const exportData = { ...data, dataType };
+  if (!remoteEnabled && ['pc', 'npc'].includes(dataType)) {
+    const original = safeDatabase().collections[dataType === 'pc' ? 'player-personal' : 'npc-personal']?.[data.id];
+    if (original) for (const key of ['id', 'uid']) {
+      if (original[key] === undefined) delete exportData[key]; else exportData[key] = original[key];
+    }
+  }
+  const [downloadJSON, copyToClipboard] = useDownloadJSON(name, exportData);
 
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [exportAnchor, setExportAnchor] = useState(null);

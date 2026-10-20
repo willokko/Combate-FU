@@ -11,9 +11,9 @@ export default defineConfig({
   })],
   server: {
     port: 3000,
-    open: true, // Automatically opens the browser
+    open: false,
   },
-  base: "/", // Ensures correct path resolution
+  base: process.env.VITE_BASE_PATH || "/",
   resolve: {
     alias: {
       '@routes': path.resolve(__dirname, 'src/routes')

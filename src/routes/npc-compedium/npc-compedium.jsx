@@ -8,11 +8,12 @@ import {
   addDoc,
   deleteDoc,
   startAfter,
-} from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+} from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
 
 import { firestore } from "../../firebase";
 import { auth } from "../../firebase";
+import { remoteEnabled } from '../../firebase';
 
 import {
   IconButton,
@@ -45,7 +46,7 @@ import {
   Download,
   Report,
 } from "@mui/icons-material";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useCollectionData } from "../../data/hooks.js";
 import { useEffect, useRef, useState } from "react";
 
 import allToken from "../icons/All-token.webp";
@@ -69,6 +70,7 @@ export default function NpcCompedium() {
 
   return (
     <Layout>
+      {!remoteEnabled && <Paper sx={{ p: 2, mb: 2 }}><Typography>{t('O compêndio compartilhado original depende do Firebase. Nesta instalação, a busca usa apenas adversários publicados na biblioteca local. Para migrar conteúdo, exporte e importe as fichas; consulte a documentação para configurar um serviço remoto próprio.')}</Typography></Paper>}
       {loading && <Skeleton />}
 
       {!loading && !user && (
@@ -196,7 +198,7 @@ function Personal({ user }) {
 
       addDoc(ref, data)
         .then(function (docRef) {
-          window.location.href = `/npc-gallery/${docRef.id}`;
+          navigate(`/npc-gallery/${docRef.id}`);
         })
         .catch(function (error) {
           console.error("Error adding document: ", error);

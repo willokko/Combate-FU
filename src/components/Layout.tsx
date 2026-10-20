@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Container } from "@mui/material";
+import LocalDataStatus from './combatManager/LocalDataStatus';
+import { writePreference } from '../data/localStore';
 import { useLocation, useNavigate } from "react-router-dom";
 import AppBar from "./appbar/AppBar";
 import CompactAppBar from "./appbar/CompactAppBar";
@@ -44,8 +46,8 @@ const Layout: React.FC<LayoutProps> = ({
 
   useEffect(() => {
     // Ensure theme and mode are in sync with localStorage
-    localStorage.setItem("selectedTheme", selectedTheme);
-    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
+    writePreference("selectedTheme", selectedTheme);
+    writePreference("isDarkMode", JSON.stringify(isDarkMode));
   }, [selectedTheme, isDarkMode]);
 
   const location = useLocation();
@@ -174,9 +176,10 @@ const Layout: React.FC<LayoutProps> = ({
         />
       )}
       {fullWidth ? (
-        <div style={{ marginTop: "5em" }}>{children}</div>
+        <div style={{ marginTop: "5em" }}><LocalDataStatus />{children}</div>
       ) : (
         <Container style={{ marginTop: "6em", alignItems: "center" }}>
+          <LocalDataStatus />
           {children}
         </Container>
       )}

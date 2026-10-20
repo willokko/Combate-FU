@@ -1,0 +1,937 @@
+[
+  {
+    "key": "+ PM · Recuperar",
+    "pt-BR": "+ PM · Recuperar",
+    "en": "+ PM · Recuperar"
+  },
+  {
+    "key": "+ PV · Cura",
+    "pt-BR": "+ PV · Cura",
+    "en": "+ PV · Cura"
+  },
+  {
+    "key": "0 PV — fora de combate",
+    "pt-BR": "0 PV — fora de combate",
+    "en": "0 PV — fora de combate"
+  },
+  {
+    "key": "A ficha vinculada não existe mais. Use cópia independente.",
+    "pt-BR": "A ficha vinculada não existe mais. Use cópia independente.",
+    "en": "A ficha vinculada não existe mais. Use cópia independente."
+  },
+  {
+    "key": "A restauração mescla as fichas e cria cópias independentes dos encontros, preservando os dados atuais.",
+    "pt-BR": "A restauração mescla as fichas e cria cópias independentes dos encontros, preservando os dados atuais.",
+    "en": "A restauração mescla as fichas e cria cópias independentes dos encontros, preservando os dados atuais."
+  },
+  {
+    "key": "AST aumentada",
+    "pt-BR": "AST aumentada",
+    "en": "AST aumentada"
+  },
+  {
+    "key": "Abalado",
+    "pt-BR": "Abalado",
+    "en": "Abalado"
+  },
+  {
+    "key": "Abrir editor completo",
+    "pt-BR": "Abrir editor completo",
+    "en": "Abrir editor completo"
+  },
+  {
+    "key": "Abrir encontro",
+    "pt-BR": "Abrir encontro",
+    "en": "Abrir encontro"
+  },
+  {
+    "key": "Adicionar condição",
+    "pt-BR": "Adicionar condição",
+    "en": "Adicionar condição"
+  },
+  {
+    "key": "Adicionar condição aos alvos",
+    "pt-BR": "Adicionar condição aos alvos",
+    "en": "Adicionar condição aos alvos"
+  },
+  {
+    "key": "Adicionar participante",
+    "pt-BR": "Adicionar participante",
+    "en": "Adicionar participante"
+  },
+  {
+    "key": "Adicionar relógio",
+    "pt-BR": "Adicionar relógio",
+    "en": "Adicionar relógio"
+  },
+  {
+    "key": "Adicionar selecionados",
+    "pt-BR": "Adicionar selecionados",
+    "en": "Adicionar selecionados"
+  },
+  {
+    "key": "Adicione um personagem real da biblioteca ou importe seu JSON. Depois, acrescente os adversários e suas cópias.",
+    "pt-BR": "Adicione um personagem real da biblioteca ou importe seu JSON. Depois, acrescente os adversários e suas cópias.",
+    "en": "Adicione um personagem real da biblioteca ou importe seu JSON. Depois, acrescente os adversários e suas cópias."
+  },
+  {
+    "key": "Adversário",
+    "pt-BR": "Adversário",
+    "en": "Adversário"
+  },
+  {
+    "key": "Adversários",
+    "pt-BR": "Adversários",
+    "en": "Adversários"
+  },
+  {
+    "key": "Adversários da biblioteca",
+    "pt-BR": "Adversários da biblioteca",
+    "en": "Adversários da biblioteca"
+  },
+  {
+    "key": "Ainda há turnos disponíveis. Avançar a rodada por decisão do mestre?",
+    "pt-BR": "Ainda há turnos disponíveis. Avançar a rodada por decisão do mestre?",
+    "en": "Ainda há turnos disponíveis. Avançar a rodada por decisão do mestre?"
+  },
+  {
+    "key": "Ajustar iniciativa",
+    "pt-BR": "Ajustar iniciativa",
+    "en": "Ajustar iniciativa"
+  },
+  {
+    "key": "Ajustar lado ativo",
+    "pt-BR": "Ajustar lado ativo",
+    "en": "Ajustar lado ativo"
+  },
+  {
+    "key": "Ajustar participante",
+    "pt-BR": "Ajustar participante",
+    "en": "Ajustar participante"
+  },
+  {
+    "key": "Ajustar rodada",
+    "pt-BR": "Ajustar rodada",
+    "en": "Ajustar rodada"
+  },
+  {
+    "key": "Alteração salva automaticamente.",
+    "pt-BR": "Alteração salva automaticamente.",
+    "en": "Alteração salva automaticamente."
+  },
+  {
+    "key": "Aplicar",
+    "pt-BR": "Aplicar",
+    "en": "Aplicar"
+  },
+  {
+    "key": "Aplicar a todos os alvos",
+    "pt-BR": "Aplicar a todos os alvos",
+    "en": "Aplicar a todos os alvos"
+  },
+  {
+    "key": "As fichas pertencem a esta instalação e navegador. Não há acesso automático à conta do domínio original nem sincronização entre dispositivos.",
+    "pt-BR": "As fichas pertencem a esta instalação e navegador. Não há acesso automático à conta do domínio original nem sincronização entre dispositivos.",
+    "en": "As fichas pertencem a esta instalação e navegador. Não há acesso automático à conta do domínio original nem sincronização entre dispositivos."
+  },
+  {
+    "key": "Atordoado",
+    "pt-BR": "Atordoado",
+    "en": "Atordoado"
+  },
+  {
+    "key": "Atualizar registro existente com esta ficha",
+    "pt-BR": "Atualizar registro existente com esta ficha",
+    "en": "Atualizar registro existente com esta ficha"
+  },
+  {
+    "key": "Atualizar relógio",
+    "pt-BR": "Atualizar relógio",
+    "en": "Atualizar relógio"
+  },
+  {
+    "key": "Backup inválido ou arquivo muito grande. Nenhum dado foi alterado.",
+    "pt-BR": "Backup inválido ou arquivo muito grande. Nenhum dado foi alterado.",
+    "en": "Backup inválido ou arquivo muito grande. Nenhum dado foi alterado."
+  },
+  {
+    "key": "Backup restaurado. Os dados anteriores foram preservados. Encontros restaurados usam cópias independentes.",
+    "pt-BR": "Backup restaurado. Os dados anteriores foram preservados. Encontros restaurados usam cópias independentes.",
+    "en": "Backup restaurado. Os dados anteriores foram preservados. Encontros restaurados usam cópias independentes."
+  },
+  {
+    "key": "Baixar backup da biblioteca e encontros",
+    "pt-BR": "Baixar backup da biblioteca e encontros",
+    "en": "Baixar backup da biblioteca e encontros"
+  },
+  {
+    "key": "Biblioteca local (separada da nuvem)",
+    "pt-BR": "Biblioteca local (separada da nuvem)",
+    "en": "Biblioteca local (separada da nuvem)"
+  },
+  {
+    "key": "Biblioteca local e backups",
+    "pt-BR": "Biblioteca local e backups",
+    "en": "Biblioteca local e backups"
+  },
+  {
+    "key": "Cancelar",
+    "pt-BR": "Cancelar",
+    "en": "Cancelar"
+  },
+  {
+    "key": "Colar JSON",
+    "pt-BR": "Colar JSON",
+    "en": "Colar JSON"
+  },
+  {
+    "key": "Colar da área de transferência",
+    "pt-BR": "Colar da área de transferência",
+    "en": "Colar da área de transferência"
+  },
+  {
+    "key": "Cole aqui o JSON completo",
+    "pt-BR": "Cole aqui o JSON completo",
+    "en": "Cole aqui o JSON completo"
+  },
+  {
+    "key": "Condição para os alvos",
+    "pt-BR": "Condição para os alvos",
+    "en": "Condição para os alvos"
+  },
+  {
+    "key": "Condições",
+    "pt-BR": "Condições",
+    "en": "Condições"
+  },
+  {
+    "key": "Confirmar importação",
+    "pt-BR": "Confirmar importação",
+    "en": "Confirmar importação"
+  },
+  {
+    "key": "Confirmar restauração",
+    "pt-BR": "Confirmar restauração",
+    "en": "Confirmar restauração"
+  },
+  {
+    "key": "Consulte o efeito da magia na ficha e aplique-o manualmente.",
+    "pt-BR": "Consulte o efeito da magia na ficha e aplique-o manualmente.",
+    "en": "Consulte o efeito da magia na ficha e aplique-o manualmente."
+  },
+  {
+    "key": "Criar cópia na biblioteca",
+    "pt-BR": "Criar cópia na biblioteca",
+    "en": "Criar cópia na biblioteca"
+  },
+  {
+    "key": "Criar encontro",
+    "pt-BR": "Criar encontro",
+    "en": "Criar encontro"
+  },
+  {
+    "key": "Crie um encontro e clique em “Adicionar participante”. Escolha fichas da biblioteca ou importe e cole o JSON exportado pelo Fultimator.",
+    "pt-BR": "Crie um encontro e clique em “Adicionar participante”. Escolha fichas da biblioteca ou importe e cole o JSON exportado pelo Fultimator.",
+    "en": "Crie um encontro e clique em “Adicionar participante”. Escolha fichas da biblioteca ou importe e cole o JSON exportado pelo Fultimator."
+  },
+  {
+    "key": "Crise",
+    "pt-BR": "Crise",
+    "en": "Crise"
+  },
+  {
+    "key": "Cópia independente",
+    "pt-BR": "Cópia independente",
+    "en": "Cópia independente"
+  },
+  {
+    "key": "DES aumentada",
+    "pt-BR": "DES aumentada",
+    "en": "DES aumentada"
+  },
+  {
+    "key": "Dano",
+    "pt-BR": "Dano",
+    "en": "Dano"
+  },
+  {
+    "key": "Dano representa perda final de PV. Resolva afinidades, Guarda e modificadores antes de aplicar.",
+    "pt-BR": "Dano representa perda final de PV. Resolva afinidades, Guarda e modificadores antes de aplicar.",
+    "en": "Dano representa perda final de PV. Resolva afinidades, Guarda e modificadores antes de aplicar."
+  },
+  {
+    "key": "Definir (=)",
+    "pt-BR": "Definir (=)",
+    "en": "Definir (=)"
+  },
+  {
+    "key": "Desfazer última alteração",
+    "pt-BR": "Desfazer última alteração",
+    "en": "Desfazer última alteração"
+  },
+  {
+    "key": "Editar notas",
+    "pt-BR": "Editar notas",
+    "en": "Editar notas"
+  },
+  {
+    "key": "Editor de adversários",
+    "pt-BR": "Editor de adversários",
+    "en": "Editor de adversários"
+  },
+  {
+    "key": "Editor de personagens",
+    "pt-BR": "Editor de personagens",
+    "en": "Editor de personagens"
+  },
+  {
+    "key": "Efeitos e condições são temporários do encontro. Recursos de personagens vinculados permanecem na biblioteca, inclusive ao remover participantes ou encerrar o combate.",
+    "pt-BR": "Efeitos e condições são temporários do encontro. Recursos de personagens vinculados permanecem na biblioteca, inclusive ao remover participantes ou encerrar o combate.",
+    "en": "Efeitos e condições são temporários do encontro. Recursos de personagens vinculados permanecem na biblioteca, inclusive ao remover participantes ou encerrar o combate."
+  },
+  {
+    "key": "Efeitos temporários e duração",
+    "pt-BR": "Efeitos temporários e duração",
+    "en": "Efeitos temporários e duração"
+  },
+  {
+    "key": "Em andamento",
+    "pt-BR": "Em andamento",
+    "en": "Em andamento"
+  },
+  {
+    "key": "Encerrado",
+    "pt-BR": "Encerrado",
+    "en": "Encerrado"
+  },
+  {
+    "key": "Encerrar combate",
+    "pt-BR": "Encerrar combate",
+    "en": "Encerrar combate"
+  },
+  {
+    "key": "Encerrar encontro",
+    "pt-BR": "Encerrar encontro",
+    "en": "Encerrar encontro"
+  },
+  {
+    "key": "Encontro encerrado · recursos mantidos",
+    "pt-BR": "Encontro encerrado · recursos mantidos",
+    "en": "Encontro encerrado · recursos mantidos"
+  },
+  {
+    "key": "Encontro não encontrado. Importe um backup ou abra a lista de encontros.",
+    "pt-BR": "Encontro não encontrado. Importe um backup ou abra a lista de encontros.",
+    "en": "Encontro não encontrado. Importe um backup ou abra a lista de encontros."
+  },
+  {
+    "key": "Encontros",
+    "pt-BR": "Encontros",
+    "en": "Encontros"
+  },
+  {
+    "key": "Encontros e fichas são salvos neste navegador. Exporte backups para guardar os dados ou migrar para outra instalação.",
+    "pt-BR": "Encontros e fichas são salvos neste navegador. Exporte backups para guardar os dados ou migrar para outra instalação.",
+    "en": "Encontros e fichas são salvos neste navegador. Exporte backups para guardar os dados ou migrar para outra instalação."
+  },
+  {
+    "key": "Enfurecido",
+    "pt-BR": "Enfurecido",
+    "en": "Enfurecido"
+  },
+  {
+    "key": "Envenenado",
+    "pt-BR": "Envenenado",
+    "en": "Envenenado"
+  },
+  {
+    "key": "Escolha o registro existente",
+    "pt-BR": "Escolha o registro existente",
+    "en": "Escolha o registro existente"
+  },
+  {
+    "key": "Esta biblioteca pertence a este navegador e instalação. Migre fichas do Fultimator original por exportação e importação.",
+    "pt-BR": "Esta biblioteca pertence a este navegador e instalação. Migre fichas do Fultimator original por exportação e importação.",
+    "en": "Esta biblioteca pertence a este navegador e instalação. Migre fichas do Fultimator original por exportação e importação."
+  },
+  {
+    "key": "Este efeito não possui um teste definido. Resolva manualmente.",
+    "pt-BR": "Este efeito não possui um teste definido. Resolva manualmente.",
+    "en": "Este efeito não possui um teste definido. Resolva manualmente."
+  },
+  {
+    "key": "Excluir",
+    "pt-BR": "Excluir",
+    "en": "Excluir"
+  },
+  {
+    "key": "Excluir esta ficha da biblioteca? Participantes existentes serão mantidos como cópias independentes.",
+    "pt-BR": "Excluir esta ficha da biblioteca? Participantes existentes serão mantidos como cópias independentes.",
+    "en": "Excluir esta ficha da biblioteca? Participantes existentes serão mantidos como cópias independentes."
+  },
+  {
+    "key": "Excluir este encontro? As fichas e os recursos da biblioteca serão preservados.",
+    "pt-BR": "Excluir este encontro? As fichas e os recursos da biblioteca serão preservados.",
+    "en": "Excluir este encontro? As fichas e os recursos da biblioteca serão preservados."
+  },
+  {
+    "key": "Exportar",
+    "pt-BR": "Exportar",
+    "en": "Exportar"
+  },
+  {
+    "key": "Exportar dados para recuperação",
+    "pt-BR": "Exportar dados para recuperação",
+    "en": "Exportar dados para recuperação"
+  },
+  {
+    "key": "Exportar encontro",
+    "pt-BR": "Exportar encontro",
+    "en": "Exportar encontro"
+  },
+  {
+    "key": "Exportar ficha",
+    "pt-BR": "Exportar ficha",
+    "en": "Exportar ficha"
+  },
+  {
+    "key": "Exportar ficha atualizada",
+    "pt-BR": "Exportar ficha atualizada",
+    "en": "Exportar ficha atualizada"
+  },
+  {
+    "key": "Falha crítica",
+    "pt-BR": "Falha crítica",
+    "en": "Falha crítica"
+  },
+  {
+    "key": "Fechar ficha",
+    "pt-BR": "Fechar ficha",
+    "en": "Fechar ficha"
+  },
+  {
+    "key": "Ficha",
+    "pt-BR": "Ficha",
+    "en": "Ficha"
+  },
+  {
+    "key": "Fraco",
+    "pt-BR": "Fraco",
+    "en": "Fraco"
+  },
+  {
+    "key": "Gerenciador de combate",
+    "pt-BR": "Gerenciador de combate",
+    "en": "Gerenciador de combate"
+  },
+  {
+    "key": "Heróis",
+    "pt-BR": "Heróis",
+    "en": "Heróis"
+  },
+  {
+    "key": "Histórico e desfazer",
+    "pt-BR": "Histórico e desfazer",
+    "en": "Histórico e desfazer"
+  },
+  {
+    "key": "Há um vínculo concorrente. Use cópias independentes antes de reabrir este encontro.",
+    "pt-BR": "Há um vínculo concorrente. Use cópias independentes antes de reabrir este encontro.",
+    "en": "Há um vínculo concorrente. Use cópias independentes antes de reabrir este encontro."
+  },
+  {
+    "key": "Identificação no encontro",
+    "pt-BR": "Identificação no encontro",
+    "en": "Identificação no encontro"
+  },
+  {
+    "key": "Importar arquivo JSON",
+    "pt-BR": "Importar arquivo JSON",
+    "en": "Importar arquivo JSON"
+  },
+  {
+    "key": "Importar encontro",
+    "pt-BR": "Importar encontro",
+    "en": "Importar encontro"
+  },
+  {
+    "key": "Importar encontro completo",
+    "pt-BR": "Importar encontro completo",
+    "en": "Importar encontro completo"
+  },
+  {
+    "key": "Importar fichas para a biblioteca",
+    "pt-BR": "Importar fichas para a biblioteca",
+    "en": "Importar fichas para a biblioteca"
+  },
+  {
+    "key": "Importar ou colar fichas",
+    "pt-BR": "Importar ou colar fichas",
+    "en": "Importar ou colar fichas"
+  },
+  {
+    "key": "Imune",
+    "pt-BR": "Imune",
+    "en": "Imune"
+  },
+  {
+    "key": "Imunidades da ficha são respeitadas ao adicionar condições.",
+    "pt-BR": "Imunidades da ficha são respeitadas ao adicionar condições.",
+    "en": "Imunidades da ficha são respeitadas ao adicionar condições."
+  },
+  {
+    "key": "Já agiu",
+    "pt-BR": "Já agiu",
+    "en": "Já agiu"
+  },
+  {
+    "key": "Lado",
+    "pt-BR": "Lado",
+    "en": "Lado"
+  },
+  {
+    "key": "Lado ativo",
+    "pt-BR": "Lado ativo",
+    "en": "Lado ativo"
+  },
+  {
+    "key": "Lado ativo (mestre)",
+    "pt-BR": "Lado ativo (mestre)",
+    "en": "Lado ativo (mestre)"
+  },
+  {
+    "key": "Lento",
+    "pt-BR": "Lento",
+    "en": "Lento"
+  },
+  {
+    "key": "Limpar seleção",
+    "pt-BR": "Limpar seleção",
+    "en": "Limpar seleção"
+  },
+  {
+    "key": "Marcar turno (mestre)",
+    "pt-BR": "Marcar turno (mestre)",
+    "en": "Marcar turno (mestre)"
+  },
+  {
+    "key": "Marcar turno realizado",
+    "pt-BR": "Marcar turno realizado",
+    "en": "Marcar turno realizado"
+  },
+  {
+    "key": "Nenhuma ficha encontrada. Crie uma ficha no editor original ou importe um JSON.",
+    "pt-BR": "Nenhuma ficha encontrada. Crie uma ficha no editor original ou importe um JSON.",
+    "en": "Nenhuma ficha encontrada. Crie uma ficha no editor original ou importe um JSON."
+  },
+  {
+    "key": "Nome do encontro",
+    "pt-BR": "Nome do encontro",
+    "en": "Nome do encontro"
+  },
+  {
+    "key": "Notas do encontro",
+    "pt-BR": "Notas do encontro",
+    "en": "Notas do encontro"
+  },
+  {
+    "key": "Notas gerais",
+    "pt-BR": "Notas gerais",
+    "en": "Notas gerais"
+  },
+  {
+    "key": "Notas temporárias",
+    "pt-BR": "Notas temporárias",
+    "en": "Notas temporárias"
+  },
+  {
+    "key": "Não foi possível ler a área de transferência. Cole o JSON manualmente no campo acima.",
+    "pt-BR": "Não foi possível ler a área de transferência. Cole o JSON manualmente no campo acima.",
+    "en": "Não foi possível ler a área de transferência. Cole o JSON manualmente no campo acima."
+  },
+  {
+    "key": "Não importar esta ficha",
+    "pt-BR": "Não importar esta ficha",
+    "en": "Não importar esta ficha"
+  },
+  {
+    "key": "Nível",
+    "pt-BR": "Nível",
+    "en": "Nível"
+  },
+  {
+    "key": "O arquivo excede 20 MB.",
+    "pt-BR": "O arquivo excede 20 MB.",
+    "en": "O arquivo excede 20 MB."
+  },
+  {
+    "key": "O catálogo compartilhado de recursos requer Supabase. Os editores, as bibliotecas locais e o combate continuam disponíveis. Consulte a documentação para configurar seu próprio serviço.",
+    "pt-BR": "O catálogo compartilhado de recursos requer Supabase. Os editores, as bibliotecas locais e o combate continuam disponíveis. Consulte a documentação para configurar seu próprio serviço.",
+    "en": "O catálogo compartilhado de recursos requer Supabase. Os editores, as bibliotecas locais e o combate continuam disponíveis. Consulte a documentação para configurar seu próprio serviço."
+  },
+  {
+    "key": "O compêndio compartilhado original depende do Firebase. Nesta instalação, a busca usa apenas adversários publicados na biblioteca local. Para migrar conteúdo, exporte e importe as fichas; consulte a documentação para configurar um serviço remoto próprio.",
+    "pt-BR": "O compêndio compartilhado original depende do Firebase. Nesta instalação, a busca usa apenas adversários publicados na biblioteca local. Para migrar conteúdo, exporte e importe as fichas; consulte a documentação para configurar um serviço remoto próprio.",
+    "en": "O compêndio compartilhado original depende do Firebase. Nesta instalação, a busca usa apenas adversários publicados na biblioteca local. Para migrar conteúdo, exporte e importe as fichas; consulte a documentação para configurar um serviço remoto próprio."
+  },
+  {
+    "key": "O encontro já está salvo automaticamente a cada alteração.",
+    "pt-BR": "O encontro já está salvo automaticamente a cada alteração.",
+    "en": "O encontro já está salvo automaticamente a cada alteração."
+  },
+  {
+    "key": "O encontro será importado como uma cópia. As fichas incluídas ficam independentes para não alterar sua biblioteca por engano.",
+    "pt-BR": "O encontro será importado como uma cópia. As fichas incluídas ficam independentes para não alterar sua biblioteca por engano.",
+    "en": "O encontro será importado como uma cópia. As fichas incluídas ficam independentes para não alterar sua biblioteca por engano."
+  },
+  {
+    "key": "Operação",
+    "pt-BR": "Operação",
+    "en": "Operação"
+  },
+  {
+    "key": "Origem das fichas",
+    "pt-BR": "Origem das fichas",
+    "en": "Origem das fichas"
+  },
+  {
+    "key": "Os lados alternam turnos. Escolha quem age dentro do lado ativo. A próxima rodada limpa apenas os turnos realizados.",
+    "pt-BR": "Os lados alternam turnos. Escolha quem age dentro do lado ativo. A próxima rodada limpa apenas os turnos realizados.",
+    "en": "Os lados alternam turnos. Escolha quem age dentro do lado ativo. A próxima rodada limpa apenas os turnos realizados."
+  },
+  {
+    "key": "PI",
+    "pt-BR": "PI",
+    "en": "PI"
+  },
+  {
+    "key": "PM",
+    "pt-BR": "PM",
+    "en": "PM"
+  },
+  {
+    "key": "PV",
+    "pt-BR": "PV",
+    "en": "PV"
+  },
+  {
+    "key": "Participantes adicionados",
+    "pt-BR": "Participantes adicionados",
+    "en": "Participantes adicionados"
+  },
+  {
+    "key": "Personagem",
+    "pt-BR": "Personagem",
+    "en": "Personagem"
+  },
+  {
+    "key": "Personagens da biblioteca",
+    "pt-BR": "Personagens da biblioteca",
+    "en": "Personagens da biblioteca"
+  },
+  {
+    "key": "Personagens e adversários juntos, com suas fichas originais.",
+    "pt-BR": "Personagens e adversários juntos, com suas fichas originais.",
+    "en": "Personagens e adversários juntos, com suas fichas originais."
+  },
+  {
+    "key": "Pesquisar por nome",
+    "pt-BR": "Pesquisar por nome",
+    "en": "Pesquisar por nome"
+  },
+  {
+    "key": "Pontos de Fábula",
+    "pt-BR": "Pontos de Fábula",
+    "en": "Pontos de Fábula"
+  },
+  {
+    "key": "Pontos de Ultima",
+    "pt-BR": "Pontos de Ultima",
+    "en": "Pontos de Ultima"
+  },
+  {
+    "key": "Prepare a batalha",
+    "pt-BR": "Prepare a batalha",
+    "en": "Prepare a batalha"
+  },
+  {
+    "key": "Próxima rodada",
+    "pt-BR": "Próxima rodada",
+    "en": "Próxima rodada"
+  },
+  {
+    "key": "Quantidade de cópias",
+    "pt-BR": "Quantidade de cópias",
+    "en": "Quantidade de cópias"
+  },
+  {
+    "key": "Reabrir encontro",
+    "pt-BR": "Reabrir encontro",
+    "en": "Reabrir encontro"
+  },
+  {
+    "key": "Recurso",
+    "pt-BR": "Recurso",
+    "en": "Recurso"
+  },
+  {
+    "key": "Registro semelhante na biblioteca:",
+    "pt-BR": "Registro semelhante na biblioteca:",
+    "en": "Registro semelhante na biblioteca:"
+  },
+  {
+    "key": "Reiniciar relógio",
+    "pt-BR": "Reiniciar relógio",
+    "en": "Reiniciar relógio"
+  },
+  {
+    "key": "Relógios",
+    "pt-BR": "Relógios",
+    "en": "Relógios"
+  },
+  {
+    "key": "Remover condição",
+    "pt-BR": "Remover condição",
+    "en": "Remover condição"
+  },
+  {
+    "key": "Remover condição dos alvos",
+    "pt-BR": "Remover condição dos alvos",
+    "en": "Remover condição dos alvos"
+  },
+  {
+    "key": "Remover do encontro",
+    "pt-BR": "Remover do encontro",
+    "en": "Remover do encontro"
+  },
+  {
+    "key": "Remover participante",
+    "pt-BR": "Remover participante",
+    "en": "Remover participante"
+  },
+  {
+    "key": "Remover relógio",
+    "pt-BR": "Remover relógio",
+    "en": "Remover relógio"
+  },
+  {
+    "key": "Renomear encontro",
+    "pt-BR": "Renomear encontro",
+    "en": "Renomear encontro"
+  },
+  {
+    "key": "Restaurar backup",
+    "pt-BR": "Restaurar backup",
+    "en": "Restaurar backup"
+  },
+  {
+    "key": "Resultado do teste",
+    "pt-BR": "Resultado do teste",
+    "en": "Resultado do teste"
+  },
+  {
+    "key": "Rodada",
+    "pt-BR": "Rodada",
+    "en": "Rodada"
+  },
+  {
+    "key": "Rolagens consultam a ficha e as condições. Custos, dano e efeitos de habilidades são aplicados pelos controles manuais.",
+    "pt-BR": "Rolagens consultam a ficha e as condições. Custos, dano e efeitos de habilidades são aplicados pelos controles manuais.",
+    "en": "Rolagens consultam a ficha e as condições. Custos, dano e efeitos de habilidades são aplicados pelos controles manuais."
+  },
+  {
+    "key": "Rolagens locais: este endereço não compartilha resultados com outros dispositivos. O compartilhamento exige Firebase configurado.",
+    "pt-BR": "Rolagens locais: este endereço não compartilha resultados com outros dispositivos. O compartilhamento exige Firebase configurado.",
+    "en": "Rolagens locais: este endereço não compartilha resultados com outros dispositivos. O compartilhamento exige Firebase configurado."
+  },
+  {
+    "key": "Salvar",
+    "pt-BR": "Salvar",
+    "en": "Salvar"
+  },
+  {
+    "key": "Salvar fichas na biblioteca local e vincular personagens",
+    "pt-BR": "Salvar fichas na biblioteca local e vincular personagens",
+    "en": "Salvar fichas na biblioteca local e vincular personagens"
+  },
+  {
+    "key": "Salvar na biblioteca",
+    "pt-BR": "Salvar na biblioteca",
+    "en": "Salvar na biblioteca"
+  },
+  {
+    "key": "Salvo neste navegador",
+    "pt-BR": "Salvo neste navegador",
+    "en": "Salvo neste navegador"
+  },
+  {
+    "key": "Selecionar",
+    "pt-BR": "Selecionar",
+    "en": "Selecionar"
+  },
+  {
+    "key": "Selecionar alvo",
+    "pt-BR": "Selecionar alvo",
+    "en": "Selecionar alvo"
+  },
+  {
+    "key": "Selecionar arquivo JSON",
+    "pt-BR": "Selecionar arquivo JSON",
+    "en": "Selecionar arquivo JSON"
+  },
+  {
+    "key": "Selecionar arquivos JSON ou ZIP",
+    "pt-BR": "Selecionar arquivos JSON ou ZIP",
+    "en": "Selecionar arquivos JSON ou ZIP"
+  },
+  {
+    "key": "Selecione “Usar cópia independente” para adicionar novamente.",
+    "pt-BR": "Selecione “Usar cópia independente” para adicionar novamente.",
+    "en": "Selecione “Usar cópia independente” para adicionar novamente."
+  },
+  {
+    "key": "Seu primeiro encontro começa aqui",
+    "pt-BR": "Seu primeiro encontro começa aqui",
+    "en": "Seu primeiro encontro começa aqui"
+  },
+  {
+    "key": "Simulador original",
+    "pt-BR": "Simulador original",
+    "en": "Simulador original"
+  },
+  {
+    "key": "Somar (+)",
+    "pt-BR": "Somar (+)",
+    "en": "Somar (+)"
+  },
+  {
+    "key": "Subtrair (−)",
+    "pt-BR": "Subtrair (−)",
+    "en": "Subtrair (−)"
+  },
+  {
+    "key": "Sucesso crítico",
+    "pt-BR": "Sucesso crítico",
+    "en": "Sucesso crítico"
+  },
+  {
+    "key": "Todos os dados originais (JSON)",
+    "pt-BR": "Todos os dados originais (JSON)",
+    "en": "Todos os dados originais (JSON)"
+  },
+  {
+    "key": "Turno realizado",
+    "pt-BR": "Turno realizado",
+    "en": "Turno realizado"
+  },
+  {
+    "key": "Turnos já realizados",
+    "pt-BR": "Turnos já realizados",
+    "en": "Turnos já realizados"
+  },
+  {
+    "key": "Turnos por rodada (mestre)",
+    "pt-BR": "Turnos por rodada (mestre)",
+    "en": "Turnos por rodada (mestre)"
+  },
+  {
+    "key": "Turnos realizados",
+    "pt-BR": "Turnos realizados",
+    "en": "Turnos realizados"
+  },
+  {
+    "key": "Usar cópia independente",
+    "pt-BR": "Usar cópia independente",
+    "en": "Usar cópia independente"
+  },
+  {
+    "key": "Usar registro existente sem alterar",
+    "pt-BR": "Usar registro existente sem alterar",
+    "en": "Usar registro existente sem alterar"
+  },
+  {
+    "key": "Use os controles de recursos e efeitos do encontro para registrar a alteração.",
+    "pt-BR": "Use os controles de recursos e efeitos do encontro para registrar a alteração.",
+    "en": "Use os controles de recursos e efeitos do encontro para registrar a alteração."
+  },
+  {
+    "key": "VIG aumentado",
+    "pt-BR": "VIG aumentado",
+    "en": "VIG aumentado"
+  },
+  {
+    "key": "VON aumentada",
+    "pt-BR": "VON aumentada",
+    "en": "VON aumentada"
+  },
+  {
+    "key": "Validar e visualizar",
+    "pt-BR": "Validar e visualizar",
+    "en": "Validar e visualizar"
+  },
+  {
+    "key": "Valor",
+    "pt-BR": "Valor",
+    "en": "Valor"
+  },
+  {
+    "key": "Valor da operação",
+    "pt-BR": "Valor da operação",
+    "en": "Valor da operação"
+  },
+  {
+    "key": "Vencedor da iniciativa",
+    "pt-BR": "Vencedor da iniciativa",
+    "en": "Vencedor da iniciativa"
+  },
+  {
+    "key": "Ver encontros",
+    "pt-BR": "Ver encontros",
+    "en": "Ver encontros"
+  },
+  {
+    "key": "Vinculado a encontro ativo:",
+    "pt-BR": "Vinculado a encontro ativo:",
+    "en": "Vinculado a encontro ativo:"
+  },
+  {
+    "key": "Vinculado à biblioteca",
+    "pt-BR": "Vinculado à biblioteca",
+    "en": "Vinculado à biblioteca"
+  },
+  {
+    "key": "alvos selecionados",
+    "pt-BR": "alvos selecionados",
+    "en": "alvos selecionados"
+  },
+  {
+    "key": "heroes",
+    "pt-BR": "heroes",
+    "en": "heroes"
+  },
+  {
+    "key": "participantes",
+    "pt-BR": "participantes",
+    "en": "participantes"
+  },
+  {
+    "key": "pc",
+    "pt-BR": "pc",
+    "en": "pc"
+  },
+  {
+    "key": "Última alteração desfeita.",
+    "pt-BR": "Última alteração desfeita.",
+    "en": "Última alteração desfeita."
+  },
+  {
+    "key": "− PM · Gastar",
+    "pt-BR": "− PM · Gastar",
+    "en": "− PM · Gastar"
+  },
+  {
+    "key": "− PV · Dano",
+    "pt-BR": "− PV · Dano",
+    "en": "− PV · Dano"
+  }
+]

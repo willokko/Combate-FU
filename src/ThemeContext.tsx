@@ -1,4 +1,5 @@
 import React, { createContext, useContext, ReactNode, useState } from 'react';
+import { readPreference, writePreference } from './data/localStore';
 
 interface ThemeContextProps {
   selectedTheme: ThemeValue;
@@ -13,7 +14,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [selectedTheme, setSelectedTheme] = useState<ThemeValue>(() => {
-    return (localStorage.getItem("selectedTheme") as ThemeValue) || "Fabula";
+    return readPreference('selectedTheme', 'Fabula') as ThemeValue;
   });
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
@@ -28,13 +29,13 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const setTheme = (theme: ThemeValue) => {
     setSelectedTheme(theme);
-    localStorage.setItem("selectedTheme", theme);
+    writePreference("selectedTheme", theme);
   };
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => {
       const newMode = !prevMode;
-      localStorage.setItem("isDarkMode", JSON.stringify(newMode));
+      writePreference("isDarkMode", JSON.stringify(newMode));
       return newMode;
     });
   };

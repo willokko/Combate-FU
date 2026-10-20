@@ -1,6 +1,14 @@
 ![alt text](https://github.com/fultimator/fultimator/blob/main/public/fultimatorlogo.webp)
 # Fultimator
 
+## Versão com combate e biblioteca local (PT-BR)
+
+Esta versão mantém o aplicativo original e acrescenta personagens reais ao combate, sincronização de recursos com a biblioteca local, importação/colagem de JSON, cópias independentes, salvamento automático, histórico/desfazer e publicação estática no GitHub Pages.
+
+Comece com `npm ci` e `npm start` (Node.js 22). Nenhuma credencial é necessária para o modo local. Use `npm test`, `npm run build` ou `npm run build:pages`. Instruções completas de uso, backup, formatos, serviços opcionais e publicação: **[docs/COMBATE_LOCAL.md](docs/COMBATE_LOCAL.md)**. Veja também o [inventário do original](docs/INSPECAO.md) e a [validação](docs/VALIDACAO.md).
+
+O novo gerenciador fica em `#/combat-sim`; o simulador anterior continua disponível em `#/legacy-combat-sim`. Os créditos, a licença e o README original seguem abaixo.
+
 ## Introduction
 
 An unofficial Fabula Ultima Tool

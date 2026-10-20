@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firestore, auth } from "../../firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { doc, setDoc } from "@firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useDocumentData } from "../../data/hooks.js";
+import { doc, setDoc } from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
 import { useTheme, useMediaQuery } from "@mui/material";
 import {
   Divider,
@@ -110,7 +110,7 @@ export default function PlayerEdit() {
   const [player] = useDocumentData(ref, { idField: "id" }); // Firestore document data hook
 
   const [isUpdated, setIsUpdated] = useState(false); // State for unsaved changes
-  const [showScrollTop] = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(true);
   const [playerTemp, setPlayerTemp] = useState(player);
   const [openTab, setOpenTab] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);

@@ -24,7 +24,7 @@ import SelectCompanionModal from "./SelectCompanionModal";
 import spellClasses from "../../../libs/spellClasses";
 import Export from "../../Export";
 import { firestore } from "../../../firebase";
-import { query, orderBy, collection, where, getDocs } from "firebase/firestore";
+import { query, orderBy, collection, where, getDocs } from "../../../data/firestore.js";
 
 export default function PlayerClassCard({
   allClasses,

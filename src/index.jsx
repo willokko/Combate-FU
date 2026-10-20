@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -29,6 +29,9 @@ import {
 } from "./ThemeContext";
 import ErrorBoundary from "./ErrorBoundary";
 import LoadingPage from "./components/common/LoadingPage";
+const CombatManager = React.lazy(() => import('./routes/combat/CombatManager.jsx'));
+const LocalEncounters = React.lazy(() => import('./routes/combat/LocalEncounters.jsx'));
+const LocalLibrary = React.lazy(() => import('./routes/combat/LocalLibrary.jsx'));
 
 const NpcGallery = React.lazy(() => import("./routes/npc-gallery/npc-gallery"));
 const NpcEdit = React.lazy(() => import("./routes/npc-edit/npc-edit"));
@@ -76,7 +79,7 @@ const App = () => {
     <React.StrictMode>
       <ThemeProvider theme={currentTheme}>
         <CssBaseline />
-        <BrowserRouter>
+        <HashRouter>
           <ErrorBoundary>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -146,6 +149,12 @@ const App = () => {
               />
               <Route
                 path="/combat-sim"
+                element={<Suspense fallback={<LoadingPage />}><LocalEncounters /></Suspense>}
+              />
+              <Route path="/combat-sim/:id" element={<Suspense fallback={<LoadingPage />}><CombatManager /></Suspense>} />
+              <Route path="/local-library" element={<Suspense fallback={<LoadingPage />}><LocalLibrary /></Suspense>} />
+              <Route
+                path="/legacy-combat-sim"
                 element={
                   <Suspense fallback={<LoadingPage />}>
                     <CombatSimulatorEncounters />
@@ -153,7 +162,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/combat-sim/:id"
+                path="/legacy-combat-sim/:id"
                 element={
                   <Suspense fallback={<LoadingPage />}>
                     <CombatSimulator />
@@ -178,7 +187,7 @@ const App = () => {
               />
             </Routes>
           </ErrorBoundary>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </React.StrictMode>
   );

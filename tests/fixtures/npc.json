@@ -1,0 +1,22 @@
+{
+  "name": "Lobo de Cristal",
+  "species": "Beast",
+  "lvl": 5,
+  "imgurl": "",
+  "uid": "fictional-source-owner",
+  "attributes": {
+    "dexterity": 8,
+    "might": 8,
+    "will": 8,
+    "insight": 8
+  },
+  "attacks": [],
+  "affinities": {},
+  "dataType": "npc",
+  "id": "example-adversary",
+  "rank": "soldier",
+  "spells": [],
+  "actions": [],
+  "special": [],
+  "notes": "Adversário fictício."
+}

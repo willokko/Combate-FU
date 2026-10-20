@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import { CheckCircle, Cancel, OpenInNew } from "@mui/icons-material";
 import { createClient } from "@supabase/supabase-js";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "../../data/hooks.js";
 import { auth } from "../../firebase";
 import { moderators } from "../../libs/userGroups";
 
@@ -63,7 +63,7 @@ const ResourceModerationPanel: React.FC<ResourceModerationPanelProps> = ({
 
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
   const webhookUrl = import.meta.env.VITE_DISCORD_APPLICATIONS_WEBHOOK_URL;
 
   // Check if user is moderator
@@ -92,7 +92,7 @@ const ResourceModerationPanel: React.FC<ResourceModerationPanelProps> = ({
   };
 
   useEffect(() => {
-    if (open && isModerator) {
+    if (open && isModerator && supabase) {
       fetchPendingSubmissions();
     }
   }, [open, isModerator]);

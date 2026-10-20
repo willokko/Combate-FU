@@ -26,6 +26,7 @@ const RollsTab = ({
   setOpen,
   handleAttack,
   handleSpell,
+  manualMode = false,
 }) => {
   const hideLogs = useCombatSimSettingsStore.getState().settings.hideLogs;
   const autoUseMP = useCombatSimSettingsStore.getState().settings.autoUseMP;
@@ -123,7 +124,7 @@ const RollsTab = ({
     }
 
     setClickedData(updatedSpellData);
-    if (autoRollSpellOneTarget && updatedSpellData.maxTargets === 1) {
+    if (manualMode || (autoRollSpellOneTarget && updatedSpellData.maxTargets === 1)) {
       handleSpell(updatedSpellData);
     } else {
       setOpen(true);
@@ -247,7 +248,7 @@ const RollsTab = ({
               </Box>
             )}
           </Box>
-          {!hideLogs && (
+          {(!hideLogs || manualMode) && (
             <Box
               sx={{
                 display: "flex",
@@ -275,7 +276,7 @@ const RollsTab = ({
                   }
                 }}
                 disabled={
-                  type === "Spell" && !getHasEnoughMP(selectedNPC, data)
+                  !manualMode && type === "Spell" && !getHasEnoughMP(selectedNPC, data)
                 }
                 sx={{
                   color: "#fff",

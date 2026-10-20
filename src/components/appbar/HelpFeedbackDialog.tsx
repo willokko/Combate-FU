@@ -60,6 +60,10 @@ const HelpFeedbackDialog: React.FC<HelpFeedbackDialogProps> = ({
       setErrorMessage("Message is required");
       return;
     }
+    if (!webhookUrl) {
+      setErrorMessage('O serviço de envio não está configurado nesta instalação. Consulte o repositório para relatar o problema ou configure um serviço de suporte próprio.');
+      return;
+    }
 
     setIsSubmitting(true);
     setErrorMessage("");
@@ -99,7 +103,7 @@ const HelpFeedbackDialog: React.FC<HelpFeedbackDialogProps> = ({
       onClose();
       setDiscordAccount("");
       setMessage("");
-      onSuccess(); // Call the success callback
+      onSuccess?.(); // Optional callback in the original gallery routes.
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(

@@ -9,9 +9,9 @@ import {
   query,
   setDoc,
   where,
-} from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+} from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
+import { useCollectionData } from "../../data/hooks.js";
 import { Card, Grid, Stack, Typography, TextField } from "@mui/material";
 
 import { auth, firestore } from "../../firebase";

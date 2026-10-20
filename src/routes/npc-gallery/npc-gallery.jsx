@@ -13,11 +13,13 @@ import {
   doc,
   addDoc,
   deleteDoc,
-} from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+} from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
 
 import { firestore } from "../../firebase";
 import { auth } from "../../firebase";
+import { remoteEnabled } from '../../firebase';
+import ParticipantPicker from '../../components/combatManager/ParticipantPicker';
 
 import {
   IconButton,
@@ -49,7 +51,7 @@ import {
   HistoryEdu,
   UploadFile,
 } from "@mui/icons-material";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useCollectionData } from "../../data/hooks.js";
 import { useEffect, useRef, useState } from "react";
 import useDownloadImage from "../../hooks/useDownloadImage";
 import Export from "../../components/Export";
@@ -82,6 +84,7 @@ export default function NpcGallery() {
 }
 
 function Personal({ user }) {
+  const [localImport, setLocalImport] = useState(false);
   const { t } = useTranslate();
   const navigate = useNavigate();
   const location = useLocation();
@@ -274,7 +277,7 @@ function Personal({ user }) {
       if (window.confirm("Are you sure you want to copy?")) {
         addDoc(ref, data)
           .then(function (docRef) {
-            window.location.href = `/npc-gallery/${docRef.id}`;
+            navigate(`/npc-gallery/${docRef.id}`);
           })
           .catch(function (error) {
             console.error("Error adding document: ", error);
@@ -386,6 +389,7 @@ function Personal({ user }) {
 
   return (
     <>
+      {localImport && <ParticipantPicker open libraryOnly onClose={() => setLocalImport(false)} />}
       <div style={{ display: "flex", alignItems: "center", marginBottom: 20 }}>
         <Paper sx={{ width: "100%", px: 2, py: 1 }}>
           <Grid container spacing={1} sx={{ py: 1 }} justifyContent="center">
@@ -612,7 +616,7 @@ function Personal({ user }) {
                 variant="outlined"
                 startIcon={<UploadFile />}
                 fullWidth
-                onClick={() => fileInputRef.current.click()}
+                onClick={() => remoteEnabled ? fileInputRef.current.click() : setLocalImport(true)}
               >
                 {t("Add NPC from JSON")}
               </Button>

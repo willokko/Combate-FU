@@ -21,7 +21,7 @@ import AddResourceRequestDialog from "../../components/resources/AddResourceRequ
 import ResourceModerationPanel from "../../components/resources/ResourceModerationPanel";
 import { createClient } from "@supabase/supabase-js";
 import { languages } from "../../components/resources/resourceUtils";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "../../data/hooks.js";
 import { auth } from "../../firebase";
 import { moderators } from "../../libs/userGroups";
 
@@ -29,7 +29,7 @@ function Resources() {
   const [user, loadingUser] = useAuthState(auth);
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
   // State for resources
   const [resources, setResources] = useState([]);
@@ -44,6 +44,7 @@ function Resources() {
   const isModerator = user && moderators.includes(user.uid);
 
   const fetchResources = async () => {
+    if (!supabase) return [];
     try {
       setLoading(true);
       let { data: resources, error } = await supabase
@@ -327,6 +328,7 @@ function Resources() {
 
   return (
     <Layout>
+      {!supabase && <Alert severity="info" sx={{ mb: 2 }}>{t('O catálogo compartilhado de recursos requer Supabase. Os editores, as bibliotecas locais e o combate continuam disponíveis. Consulte a documentação para configurar seu próprio serviço.')}</Alert>}
       {/* Header Section */}
       <HeaderSection isMobile={isMobile} />
 

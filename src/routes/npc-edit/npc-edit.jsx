@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { firestore, auth } from "../../firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
-import { doc, setDoc, collection, addDoc } from "@firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useDocumentData } from "../../data/hooks.js";
+import { doc, setDoc, collection, addDoc } from "../../data/firestore.js";
+import { useAuthState } from "../../data/hooks.js";
 import {
   Grid,
   Divider,
@@ -301,7 +301,7 @@ export default function NpcEdit() {
 
     addDoc(ref, data)
       .then(function (docRef) {
-        window.location.href = `/npc-gallery/${docRef.id}`;
+        navigate(`/npc-gallery/${docRef.id}`);
       })
       .catch(function (error) {
         console.error("Error adding document: ", error);

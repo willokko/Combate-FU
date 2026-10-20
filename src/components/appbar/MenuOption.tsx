@@ -23,7 +23,7 @@ import {
   signOut as firebaseSignOut,
   UserCredential,
 } from "firebase/auth";
-import { auth, googleAuthProvider } from "../../firebase";
+import { auth, googleAuthProvider, remoteEnabled } from "../../firebase";
 import { signInWithPopup } from "@firebase/auth";
 
 import DarkModeToggle, { DarkModeToggleProps } from "./DarkModeToggle";
@@ -49,6 +49,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
   const [userUUID, setUserUUID] = useState("");
 
   useEffect(() => {
+    if (!remoteEnabled) return;
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -166,7 +167,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
           horizontal: "right",
         }}
       >
-        <MenuItem onClick={handleSwitchAccount}>
+        <MenuItem onClick={handleSwitchAccount} disabled={!remoteEnabled}>
           <ListItemIcon>
             <SwitchAccount />
           </ListItemIcon>
@@ -181,7 +182,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
             <ListItemText primary={t("Sign Out")} />
           </MenuItem>
         ) : (
-          <MenuItem onClick={signInWithGoogle}>
+          <MenuItem onClick={signInWithGoogle} disabled={!remoteEnabled}>
             <ListItemIcon>
               <Login />
             </ListItemIcon>

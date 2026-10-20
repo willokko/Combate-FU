@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import data from "./data.json";
+import combatManagerData from "./combatManager.json";
+import { readPreference } from '../data/localStore';
 
 export const languageOptions = [
   { code: "en", label: "English" },
@@ -29,7 +31,7 @@ export const languageOptions = [
 const debugMode = false;
 
 const translate = (key) => {
-  return data.find((item) => item.key === key);
+  return combatManagerData.find((item) => item.key === key) || data.find((item) => item.key === key);
 };
 
 const replaceKey = (key, noSpan, language, params) => {
@@ -85,10 +87,10 @@ const replaceKey = (key, noSpan, language, params) => {
 };
 
 export const useTranslate = (allowedLanguages) => {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("pt-BR");
 
   useEffect(() => {
-    setLanguage(localStorage.getItem("selectedLanguage") || "en");
+    setLanguage(readPreference("selectedLanguage", "pt-BR"));
   }, []);
 
   if (
@@ -106,7 +108,7 @@ export const useTranslate = (allowedLanguages) => {
 };
 
 export const t = (key, params, noSpan, allowedLanguages) => {
-  let language = localStorage.getItem("selectedLanguage") || "en";
+  let language = readPreference("selectedLanguage", "pt-BR");
   if (
     allowedLanguages &&
     allowedLanguages.length > 0 &&

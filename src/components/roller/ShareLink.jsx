@@ -10,10 +10,11 @@ import {
 import CopyToClipboard from "react-copy-to-clipboard";
 import { Close, ContentCopy } from "@mui/icons-material";
 import { useTranslate } from "../../translation/translate";
+import { remoteEnabled } from '../../firebase';
 
 export default function ShareLink({ scope }) {
   const { t } = useTranslate();
-  const url = window.location.origin + "/roller/" + scope;
+  const url = window.location.href.split('#')[0] + "#/roller/" + scope;
 
   const [snackBarOpen, setSnackbarOpen] = useState(false);
 
@@ -28,7 +29,7 @@ export default function ShareLink({ scope }) {
   return (
     <Card sx={{ p: 2, width: "100%", margin: "0 auto" }}>
       <Typography sx={{ mb: 1 }}>
-        {t("Share this url to other players to see rolls:")}
+        {t(remoteEnabled ? "Share this url to other players to see rolls:" : 'Rolagens locais: este endereço não compartilha resultados com outros dispositivos. O compartilhamento exige Firebase configurado.')}
       </Typography>
       <TextField
         fullWidth

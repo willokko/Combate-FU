@@ -24,7 +24,7 @@ import { t } from "../../translation/translate";
 import { globalConfirm } from "../../utility/globalConfirm";
 import EncounterCard from "../../components/combatSim/EncounterCard";
 import { useCombatSimSettingsStore } from "../../stores/combatSimSettingsStore";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "../../data/hooks.js";
 import { auth, firestore } from "../../firebase";
 import { SignIn } from "../../components/auth";
 import {
@@ -34,8 +34,8 @@ import {
   addDoc,
   deleteDoc,
   doc,
-} from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
+} from "../../data/firestore.js";
+import { useCollectionData } from "../../data/hooks.js";
 
 const MAX_ENCOUNTERS = 3;
 
@@ -195,9 +195,9 @@ const CombatSimEncounters = ({ user }) => {
   };
 
   const handleNavigateToEncounter = (id) => {
-    navigate(`/combat-sim/${id}`, {
+    navigate(`/legacy-combat-sim/${id}`, {
       state: {
-        from: "/combat-sim",
+        from: "/legacy-combat-sim",
       },
     });
   };

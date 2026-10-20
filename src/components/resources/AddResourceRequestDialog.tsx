@@ -19,7 +19,7 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useTranslate } from "../../translation/translate";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState } from "../../data/hooks.js";
 import { auth } from "../../firebase";
 import { createClient } from "@supabase/supabase-js";
 
@@ -44,7 +44,7 @@ const AddResourceRequestDialog: React.FC<AddResourceRequestDialogProps> = ({
   const [isUserBlocked, setIsUserBlocked] = useState(false);
   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
   const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
   const { t } = useTranslate();
   const [formData, setFormData] = useState({
     resourceName: "",
@@ -98,7 +98,7 @@ const AddResourceRequestDialog: React.FC<AddResourceRequestDialogProps> = ({
   ];
 
   const checkUser = async () => {
-    if (!user) return;
+    if (!user || !supabase) return;
 
     try {
       const { data: author, error } = await supabase
