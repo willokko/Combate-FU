@@ -1,4 +1,5 @@
 import { t } from "../translation/translate";
+import { codexExtraClasses } from "./codexExtraClasses.js";
 
 const classList = [
   {
@@ -882,6 +883,7 @@ const classList = [
     },
     skills: [],
   },
+  ...codexExtraClasses,
   {
     name: "Ace of Cards",
     book: "bonus",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import data from "./data.json";
 import combatManagerData from "./combatManager.json";
+import { codexExtraTranslations } from "../libs/codexExtraClasses.js";
 import { readPreference } from '../data/localStore';
 
 export const languageOptions = [
@@ -31,6 +32,11 @@ export const languageOptions = [
 const debugMode = false;
 
 const translate = (key) => {
+  if (Object.hasOwn(codexExtraTranslations, key)) {
+    // This supplement is available in Brazilian Portuguese. Keep its text
+    // readable when the rest of the application is using another language.
+    return Object.fromEntries(languageOptions.map(({ code }) => [code, codexExtraTranslations[key]]));
+  }
   return combatManagerData.find((item) => item.key === key) || data.find((item) => item.key === key);
 };
 

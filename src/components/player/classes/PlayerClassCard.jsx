@@ -259,9 +259,10 @@ export default function PlayerClassCard({
 
   const handleEditSkill = (index) => {
     const skill = classItem.skills[index];
-    setSkillName(skill.skillName);
+    const isCodexSkill = skill.skillName.startsWith("CodexExtra.");
+    setSkillName(isCodexSkill ? t(skill.skillName) : skill.skillName);
     setMaxLevel(skill.maxLvl);
-    setDescription(skill.description);
+    setDescription(isCodexSkill ? t(skill.description) : skill.description);
     setEditSkillIndex(index);
     setSpecialSkill(skill.specialSkill);
     setOpenAddSkillModal(true);
@@ -369,6 +370,13 @@ export default function PlayerClassCard({
             editClassName={() => handleOpenEditClassNameModal()}
           />
         </Grid>
+        {classItem.source?.title === "Codex Extra" && (
+          <Grid item xs={12}>
+            <Typography variant="body2" sx={{ px: 2, pb: 1 }}>
+              {t("CodexExtra.Source", [classItem.source.pages])}
+            </Typography>
+          </Grid>
+        )}
         {warnings.map((warning, index) => (
           <Grid item xs={12} key={index}>
             <Alert variant="filled" severity="warning">

@@ -7,6 +7,8 @@ Esta versão mantém o aplicativo original e acrescenta personagens reais ao com
 
 Comece com `npm ci` e `npm start` (Node.js 22). Nenhuma credencial é necessária para o modo local. Use `npm test`, `npm run build` ou `npm run build:pages`. Instruções completas de uso, backup, formatos, serviços opcionais e publicação: **[docs/COMBATE_LOCAL.md](docs/COMBATE_LOCAL.md)**. Veja também o [inventário do original](docs/INSPECAO.md) e a [validação](docs/VALIDACAO.md).
 
+As seis classes brasileiras do **Codex Extra** estão em **Classes → Livro → Conteúdo bônus**, junto de Carteador e Necromante. Consulte [classes, regras de uso e créditos](docs/CODEX_EXTRA.md).
+
 O novo gerenciador fica em `#/combat-sim`; o simulador anterior continua disponível em `#/legacy-combat-sim`. Os créditos, a licença e o README original seguem abaixo.
 
 ## Introduction

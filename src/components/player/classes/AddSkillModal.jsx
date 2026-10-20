@@ -131,7 +131,7 @@ export default function AddSkillModal({
               fullWidth
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              maxLength={1500}
+              maxLength={10000}
               maxRows={10}
             />
           </Grid>

@@ -18,6 +18,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { useTranslate } from "../../../translation/translate";
 import CustomHeader from "../../common/CustomHeader";
 import classList from "../../../libs/classes";
+import { createPlayerClass } from "../../../libs/playerClasses.js";
 import PlayerClassCard from "./PlayerClassCard";
 import useUploadJSON from "../../../hooks/useUploadJSON";
 
@@ -88,10 +89,11 @@ export default function EditPlayerClasses({
 
       const updatedPlayer = {
         ...player,
-        classes: Array.isArray(player.classes) ? player.classes : [],
+        classes: Array.isArray(player.classes) ? [...player.classes] : [],
       };
 
       updatedPlayer.classes.push({
+        ...data,
         name: name,
         lvl: lvl,
         benefits: benefits,
@@ -132,31 +134,10 @@ export default function EditPlayerClasses({
 
     const updatedPlayer = {
       ...player,
-      classes: Array.isArray(player.classes) ? player.classes : [],
+      classes: Array.isArray(player.classes) ? [...player.classes] : [],
     };
 
-    const sortedSkills = selectedClass.skills.sort((a, b) => {
-      if (a.skillName < b.skillName) {
-        return -1;
-      }
-      if (a.skillName > b.skillName) {
-        return 1;
-      }
-      return 0;
-    });
-
-    updatedPlayer.classes.push({
-      name: name,
-      lvl: 1,
-      benefits: selectedClass.benefits,
-      skills: sortedSkills,
-      heroic: {
-        name: "",
-        description: "",
-      },
-      spells: [],
-      isHomebrew: isHomebrew,
-    });
+    updatedPlayer.classes.push(createPlayerClass(selectedClass, { name, isHomebrew }));
 
     setPlayer(updatedPlayer);
     updateMaxStats();

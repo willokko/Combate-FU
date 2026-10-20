@@ -17,6 +17,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { useTranslate } from "../../../translation/translate";
 import Clock from "./Clock";
+import { canPerformRitualism } from "../../../libs/playerClasses.js";
 import { useCustomTheme } from "../../../hooks/useCustomTheme";
 
 export default function PlayerRituals({
@@ -60,9 +61,7 @@ export default function PlayerRituals({
     return clockValue;
   }
 
-  const hasRitualism = player.classes.some(
-    (playerClass) => playerClass.benefits.rituals.ritualism
-  );
+  const hasRitualism = canPerformRitualism(player);
 
   const hasSpiritism = player.classes.some((playerClass) =>
     playerClass.skills.some(
