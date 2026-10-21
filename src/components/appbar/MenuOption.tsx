@@ -23,8 +23,9 @@ import {
   signOut as firebaseSignOut,
   UserCredential,
 } from "firebase/auth";
-import { auth, googleAuthProvider, remoteEnabled } from "../../firebase";
+import { auth, googleAuthProvider, remoteEnabled, cloudEnabled } from "../../firebase";
 import { signInWithPopup } from "@firebase/auth";
+import { hasUnsavedEdits } from '../../data/cloudEditing.js';
 
 import DarkModeToggle, { DarkModeToggleProps } from "./DarkModeToggle";
 import ThemeSwitcher, { ThemeSwitcherProps } from "./ThemeSwitcher";
@@ -49,7 +50,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
   const [userUUID, setUserUUID] = useState("");
 
   useEffect(() => {
-    if (!remoteEnabled) return;
+    if (!remoteEnabled && !cloudEnabled) return;
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -92,6 +93,11 @@ const MenuOption: React.FC<MenuOptionProps> = ({
     successMessage: string,
     errorMessagePrefix: string
   ): Promise<void> => {
+    if (cloudEnabled && hasUnsavedEdits()) {
+      setMessage('Salve ou descarte a edição aberta antes de trocar de biblioteca.');
+      setIsSnackbarOpen(true);
+      return;
+    }
     try {
       const userCredential = await authAction();
       if (userCredential) {
@@ -167,7 +173,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
           horizontal: "right",
         }}
       >
-        <MenuItem onClick={handleSwitchAccount} disabled={!remoteEnabled}>
+        <MenuItem onClick={handleSwitchAccount} disabled={!remoteEnabled && !cloudEnabled}>
           <ListItemIcon>
             <SwitchAccount />
           </ListItemIcon>
@@ -182,7 +188,7 @@ const MenuOption: React.FC<MenuOptionProps> = ({
             <ListItemText primary={t("Sign Out")} />
           </MenuItem>
         ) : (
-          <MenuItem onClick={signInWithGoogle} disabled={!remoteEnabled}>
+          <MenuItem onClick={signInWithGoogle} disabled={!remoteEnabled && !cloudEnabled}>
             <ListItemIcon>
               <Login />
             </ListItemIcon>

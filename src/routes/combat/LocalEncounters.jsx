@@ -9,15 +9,17 @@ import { createEncounter, exportEncounter } from '../../data/encounters.js';
 import { downloadJSON } from '../../data/files.js';
 import EncounterImport from '../../components/combatManager/EncounterImport.jsx';
 import { t } from '../../translation/translate';
+import { useCloudSession } from '../../components/cloud/CloudSession.jsx';
 
 export default function LocalEncounters() {
   const db = useLocalDatabase(), navigate = useNavigate();
+  const cloud = useCloudSession();
   const [name, setName] = useState(''), [error, setError] = useState(''), [importing, setImporting] = useState(false);
   const encounters = Object.values(db.encounters).sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
   const create = () => { try { const encounter = createEncounter(name); transaction(draft => { draft.encounters[encounter.id] = encounter; }); navigate(`/combat-sim/${encounter.id}`); } catch (error) { setError(error.message); } };
   return <Layout><Stack spacing={3}>
     <Box><Typography variant="h3" component="h1">{t('Gerenciador de combate')}</Typography><Typography>{t('Personagens e adversários juntos, com suas fichas originais.')}</Typography></Box>
-    <Alert severity="info">{t('Encontros e fichas são salvos neste navegador. Exporte backups para guardar os dados ou migrar para outra instalação.')}</Alert>
+    <Alert severity="info">{cloud.user ? 'Os encontros desta conta são salvos neste dispositivo e sincronizados com a nuvem. Confira o indicador de envio acima e mantenha seus backups.' : t('Encontros e fichas são salvos neste navegador. Exporte backups para guardar os dados ou migrar para outra instalação.')}</Alert>
     {error && <Alert severity="error">{error}</Alert>}
     <Stack direction={{ xs: 'column', sm: 'row' }} gap={1} component="form" onSubmit={e => { e.preventDefault(); create(); }}><TextField label={t('Nome do encontro')} value={name} onChange={e => setName(e.target.value)} inputProps={{ maxLength: 200 }} fullWidth /><Button variant="contained" startIcon={<Add />} type="submit" sx={{ minWidth: 190 }}>{t('Criar encontro')}</Button></Stack>
     <Stack direction="row" gap={1} flexWrap="wrap"><Button startIcon={<UploadFile />} onClick={() => setImporting(true)}>{t('Importar encontro completo')}</Button><Button component={Link} to="/local-library">{t('Biblioteca local e backups')}</Button><Button component={Link} to="/legacy-combat-sim">{t('Simulador original')}</Button></Stack>

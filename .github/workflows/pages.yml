@@ -1,4 +1,4 @@
-name: Publicar versão local no GitHub Pages
+name: Publicar no GitHub Pages
 on:
   push:
     branches: [main]

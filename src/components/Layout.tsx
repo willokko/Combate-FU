@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import LocalDataStatus from './combatManager/LocalDataStatus';
 import { writePreference } from '../data/localStore';
+import { setEditorDirty } from '../data/cloudEditing.js';
 import { useLocation, useNavigate } from "react-router-dom";
 import AppBar from "./appbar/AppBar";
 import CompactAppBar from "./appbar/CompactAppBar";
@@ -37,6 +38,11 @@ const Layout: React.FC<LayoutProps> = ({
   loading,
 }) => {
   const { t } = useTranslate();
+  useEffect(() => {
+    const editor = {};
+    setEditorDirty(editor, Boolean(unsavedChanges));
+    return () => setEditorDirty(editor, false);
+  }, [unsavedChanges]);
   const { selectedTheme, isDarkMode, setTheme, toggleDarkMode } =
     useThemeContext();
 

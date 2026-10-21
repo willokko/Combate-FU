@@ -25,6 +25,8 @@ Nesta máquina, o comando global `npm` está apontando para uma instalação aus
 
 ## Usar o combate
 
+**Nuvem opcional:** esta versão também oferece login Google e sincronização privada pelo projeto Firebase configurado. A biblioteca sem login continua local e separada. Confira **[NUVEM.md](NUVEM.md)** para publicar regras, autorizar domínios e importar dados locais. Os avisos sobre ausência de sincronização nas instruções locais abaixo descrevem o uso sem login e o backend remoto original.
+
 ### Retratos do dispositivo
 
 No editor de personagem, abra **Informações**; no editor de adversário, abra as informações básicas. Clique em **Escolher imagem do dispositivo**, escolha o arquivo, confira a prévia e **salve a ficha**. O campo de URL e os botões de atualizar/remover continuam disponíveis. O retrato aparece nas fichas, biblioteca e cartões de combate que usam essa ficha.

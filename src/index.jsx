@@ -29,6 +29,7 @@ import {
 } from "./ThemeContext";
 import ErrorBoundary from "./ErrorBoundary";
 import LoadingPage from "./components/common/LoadingPage";
+import CloudSession from './components/cloud/CloudSession.jsx';
 const CombatManager = React.lazy(() => import('./routes/combat/CombatManager.jsx'));
 const LocalEncounters = React.lazy(() => import('./routes/combat/LocalEncounters.jsx'));
 const LocalLibrary = React.lazy(() => import('./routes/combat/LocalLibrary.jsx'));
@@ -195,7 +196,7 @@ const App = () => {
 
 const Root = () => (
   <AppThemeProvider>
-    <App />
+    <CloudSession><App /></CloudSession>
   </AppThemeProvider>
 );
 

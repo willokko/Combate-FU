@@ -9,6 +9,8 @@ Comece com `npm ci` e `npm start` (Node.js 22). Nenhuma credencial é necessári
 
 As seis classes brasileiras do **Codex Extra** estão em **Classes → Livro → Conteúdo bônus**, junto de Carteador e Necromante. Consulte [classes, regras de uso e créditos](docs/CODEX_EXTRA.md).
 
+Login com Google e sincronização privada de fichas e encontros: **[configurar a nuvem](docs/NUVEM.md)**. A biblioteca sem login continua separada e pode ser importada por escolha do usuário. Publique as regras do Firestore antes de usar a sincronização.
+
 O novo gerenciador fica em `#/combat-sim`; o simulador anterior continua disponível em `#/legacy-combat-sim`. Os créditos, a licença e o README original seguem abaixo.
 
 ## Introduction

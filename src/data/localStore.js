@@ -2,7 +2,15 @@ import { decodeDatabase, encodeDatabase } from './imageStorage.js';
 
 // One atomic write contains encounters AND linked sheets. Never clear existing keys.
 export const STORE_VERSION = 1;
-export const STORE_KEY = `fultimator.local.v1:${import.meta.env?.BASE_URL || '/'}`;
+export const LOCAL_STORE_KEY = `fultimator.local.v1:${import.meta.env?.BASE_URL || '/'}`;
+export let STORE_KEY = LOCAL_STORE_KEY;
+let accountScope = null;
+export const getAccountScope = () => accountScope;
+export function setAccountScope(uid) {
+  accountScope = uid || null;
+  STORE_KEY = uid ? `${LOCAL_STORE_KEY}:account:${encodeURIComponent(uid)}` : LOCAL_STORE_KEY;
+  lastError = ''; emit();
+}
 export const LOCAL_UID = 'local-user';
 const empty = () => ({ version: STORE_VERSION, revision: 0, collections: {}, encounters: {} });
 const listeners = new Set();
@@ -23,9 +31,7 @@ export function readDatabase(storage = globalThis.localStorage) {
     const raw = storage.getItem(STORE_KEY);
     if (!raw) return empty();
     const data = decodeDatabase(raw);
-    if (data.version !== STORE_VERSION || !data.collections || typeof data.collections !== 'object' || Array.isArray(data.collections) || !data.encounters || typeof data.encounters !== 'object' || Array.isArray(data.encounters) || !Number.isSafeInteger(data.revision)) {
-      throw new Error('A versão dos dados locais não é reconhecida. Exporte um backup antes de continuar.');
-    }
+    validateDatabaseShape(data);
     return data;
   } catch (error) {
     throw new Error(`Não foi possível ler os dados locais. Os dados anteriores foram preservados. ${error.message}`);
@@ -36,6 +42,7 @@ export function transaction(mutator, storage = globalThis.localStorage) {
     const draft = readDatabase(storage);
     const result = mutator(draft);
     draft.revision++;
+    if (accountScope) draft._cloud = { generation: draft._cloud?.generation || null, dirty: true };
     storage.setItem(STORE_KEY, encodeDatabase(draft));
     lastError = '';
     emit();
@@ -45,6 +52,32 @@ export function transaction(mutator, storage = globalThis.localStorage) {
     reportStorageError(wrapped);
     throw wrapped;
   }
+}
+export function validateDatabaseShape(data) {
+  if (!data || data.version !== STORE_VERSION || !data.collections || typeof data.collections !== 'object' || Array.isArray(data.collections) || !data.encounters || typeof data.encounters !== 'object' || Array.isArray(data.encounters) || !Number.isSafeInteger(data.revision)) {
+    throw new Error('A versão dos dados locais não é reconhecida. Exporte um backup antes de continuar.');
+  }
+}
+// Atomic metadata updates do not count as user edits or trigger upload loops.
+export function acceptCloudDatabase(database, generation, expectedRevision) {
+  const current = readDatabase();
+  if (current.revision !== expectedRevision) throw new Error('Houve uma alteração local durante o download. Tente novamente.');
+  const next = { ...clone(database), revision: current.revision + 1, _cloud: { generation, dirty: false } };
+  validateDatabaseShape(next);
+  try { globalThis.localStorage.setItem(STORE_KEY, encodeDatabase(next)); lastError = ''; emit(); }
+  catch (error) { reportStorageError(error); throw error; }
+}
+export function acknowledgeCloud(generation, uploadedRevision) {
+  const next = readDatabase();
+  next._cloud = { generation, dirty: next.revision !== uploadedRevision };
+  try { globalThis.localStorage.setItem(STORE_KEY, encodeDatabase(next)); lastError = ''; emit(); }
+  catch (error) { reportStorageError(error); throw error; }
+}
+export function readOfflineLibrary() {
+  const raw = globalThis.localStorage.getItem(LOCAL_STORE_KEY);
+  const database = raw ? decodeDatabase(raw) : empty();
+  validateDatabaseShape(database);
+  return database;
 }
 export function safeDatabase() {
   try { return readDatabase(); }
