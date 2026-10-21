@@ -25,6 +25,18 @@ Nesta máquina, o comando global `npm` está apontando para uma instalação aus
 
 ## Usar o combate
 
+### Retratos do dispositivo
+
+No editor de personagem, abra **Informações**; no editor de adversário, abra as informações básicas. Clique em **Escolher imagem do dispositivo**, escolha o arquivo, confira a prévia e **salve a ficha**. O campo de URL e os botões de atualizar/remover continuam disponíveis. O retrato aparece nas fichas, biblioteca e cartões de combate que usam essa ficha.
+
+Aceita PNG, JPG, WebP e GIF de até **10 MB**. A imagem é reduzida proporcionalmente para no máximo **512 pixels** no maior lado e **64 KiB**, usando WebP ou JPEG. GIF vira um retrato estático. Arquivos vazios, tipos não suportados, imagens danificadas e dimensões excessivas são recusados sem trocar o retrato anterior. O arquivo original no computador não é alterado.
+
+O retrato local é incorporado ao campo original `imgurl` como uma URL de dados. Ele acompanha os JSONs de ficha, encontro e backup, sem hospedagem de imagem ou credenciais. O armazenamento interno guarda apenas uma cópia de cada imagem repetida nas fichas e no histórico; o formato público dos JSONs continua contendo a imagem completa. Dados antigos são lidos automaticamente. O limite total de armazenamento do navegador ainda se aplica; falhas de gravação preservam os dados anteriores e são informadas pelo sistema existente.
+
+Personagens vinculados recebem a imagem atualizada ao salvar pelo editor. Adversários e cópias independentes já adicionados ao encontro mantêm sua própria ficha: adicione novamente a ficha atualizada quando quiser trocar o retrato dessas instâncias.
+
+### Fluxo do encontro
+
 1. Abra **Gerenciador de combate**, dê um nome ao encontro e escolha **Criar encontro**.
 2. Clique em **Adicionar participante**. Pesquise personagens ou adversários da biblioteca, selecione vários e ajuste a quantidade de cópias dos adversários. Cada cópia tem identidade e estado próprios.
 3. Também é possível importar arquivos JSON individuais, vários arquivos, um array de fichas ou o ZIP produzido por **Exportar todos os NPCs** do original. **Colar JSON** aceita o mesmo conteúdo. A leitura da área de transferência depende da permissão do navegador; o campo manual está sempre disponível.

@@ -14,8 +14,6 @@ import {
   Switch,
   TextField,
   Typography,
-  Button,
-  Snackbar
 } from "@mui/material";
 import { EditAttributes } from "./EditAttributes";
 import ReactMarkdown from "react-markdown";
@@ -23,6 +21,7 @@ import { useTranslate } from "../../translation/translate";
 import CustomTextarea from "../common/CustomTextarea";
 import CustomHeader from "../common/CustomHeader";
 import { useCustomTheme } from "../../hooks/useCustomTheme";
+import PortraitField from "../common/PortraitField.jsx";
 
 export default function EditBasics({ npc, setNpc }) {
   const { t } = useTranslate();
@@ -30,16 +29,6 @@ export default function EditBasics({ npc, setNpc }) {
   const background = theme.mode === 'dark'
   ? `linear-gradient(to right, ${theme.primary}, ${theme.quaternary})`
   : `linear-gradient(to right, ${theme.ternary}, transparent)`;
-
-  const [imgUrlTemp, setImgUrlTemp] = React.useState(npc.imgurl || "");
-
-  const [isImageError, setIsImageError] = React.useState(false);
-  const [errorMessage, setErrorMessage] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const onChange = useCallback(
     (key, value) => {
@@ -88,36 +77,6 @@ export default function EditBasics({ npc, setNpc }) {
     },
     [onChange]
   );
-
-  const checkImageSize = useCallback(async (imageUrl) => {
-    try {
-      const response = await fetch(imageUrl);
-      if (!response.ok) {
-        setIsImageError(true);
-        setErrorMessage(
-          `Failed to fetch image: ${response.status} ${response.statusText}`
-        );
-        throw new Error(
-          `Failed to fetch image: ${response.status} ${response.statusText}`
-        );
-      }
-      const blob = await response.blob();
-      if (blob.size > 5 * 1024 * 1024) {
-        // 5MB
-        setIsImageError(true);
-        setErrorMessage("Error: Image size is too large, max 5MB");
-        return false;
-      } else {
-        setIsImageError(false);
-        setErrorMessage("");
-        return "Please ensure to credit the artist in the notes section.";
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-      setIsImageError(true);
-      setErrorMessage(`Error: ${error.message}`);
-    }
-  }, []);
 
   return (
     <Grid container spacing={2}>
@@ -304,68 +263,8 @@ export default function EditBasics({ npc, setNpc }) {
           </Grid>
         </Grid>
       )}
-      <Grid item xs={12} sm={8}>
-        <TextField
-          id="imgurl"
-          label={t("Image URL") + ":"}
-          value={imgUrlTemp}
-          onChange={(e) => {
-            setImgUrlTemp(e.target.value);
-            setIsImageError(false);
-            setErrorMessage("");
-          }}
-          fullWidth
-          error={imgUrlTemp.length > 0 && isImageError}
-          helperText={
-            isImageError && imgUrlTemp.length > 0 ? errorMessage : t("Please ensure to credit the artist in the description or notes section.")
-          }
-        />
-      </Grid>
-      <Grid item xs={6} sm={2}>
-        <Button
-          variant="contained"
-          onClick={() => {
-            checkImageSize(imgUrlTemp).then((result) => {
-              if (result) {
-                setNpc((prevState) => {
-                  const newState = { ...prevState };
-                  newState.imgurl = imgUrlTemp;
-                  return newState;
-                });
-                setOpen(true);
-              } else {
-                console.log("Error on uploading image");
-              }
-            });
-          }}
-          sx={{ height: "56px", width: "100%" }}
-        >
-          {t("Update Image")}
-        </Button>
-        <Snackbar
-          open={open}
-          autoHideDuration={3000}
-          onClose={handleClose}
-          message={t("Image uploaded successfully!")}
-        />
-      </Grid>
-      <Grid item xs={6} sm={2}>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            setImgUrlTemp("");
-            setIsImageError(false);
-            setErrorMessage("");
-            setNpc((prevState) => {
-              const newState = { ...prevState };
-              newState.imgurl = "";
-              return newState;
-            });
-          }}
-          sx={{ height: "56px", width: "100%" }}
-        >
-          {t("Remove Image")}
-        </Button>
+      <Grid item xs={12}>
+        <PortraitField value={npc.imgurl} onChange={value => onChange('imgurl', value)} />
       </Grid>
       <Grid item xs={12}>
         <FormControl variant="standard" fullWidth>

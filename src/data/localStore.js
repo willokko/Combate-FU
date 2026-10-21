@@ -1,3 +1,5 @@
+import { decodeDatabase, encodeDatabase } from './imageStorage.js';
+
 // One atomic write contains encounters AND linked sheets. Never clear existing keys.
 export const STORE_VERSION = 1;
 export const STORE_KEY = `fultimator.local.v1:${import.meta.env?.BASE_URL || '/'}`;
@@ -20,7 +22,7 @@ export function readDatabase(storage = globalThis.localStorage) {
   try {
     const raw = storage.getItem(STORE_KEY);
     if (!raw) return empty();
-    const data = JSON.parse(raw);
+    const data = decodeDatabase(raw);
     if (data.version !== STORE_VERSION || !data.collections || typeof data.collections !== 'object' || Array.isArray(data.collections) || !data.encounters || typeof data.encounters !== 'object' || Array.isArray(data.encounters) || !Number.isSafeInteger(data.revision)) {
       throw new Error('A versão dos dados locais não é reconhecida. Exporte um backup antes de continuar.');
     }
@@ -34,7 +36,7 @@ export function transaction(mutator, storage = globalThis.localStorage) {
     const draft = readDatabase(storage);
     const result = mutator(draft);
     draft.revision++;
-    storage.setItem(STORE_KEY, JSON.stringify(draft));
+    storage.setItem(STORE_KEY, encodeDatabase(draft));
     lastError = '';
     emit();
     return result;

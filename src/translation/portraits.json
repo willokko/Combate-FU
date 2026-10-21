@@ -1,0 +1,12 @@
+[
+  { "key": "Portrait.chooseFile", "pt-BR": "Escolher imagem do dispositivo", "en": "Choose image from device" },
+  { "key": "Portrait.processing", "pt-BR": "Preparando imagem…", "en": "Preparing image…" },
+  { "key": "Portrait.help", "pt-BR": "PNG, JPG, WebP ou GIF, até 10 MB. O retrato será reduzido automaticamente; GIF usa uma imagem estática.", "en": "PNG, JPG, WebP or GIF, up to 10 MB. Portraits are resized automatically; GIF uses a still image." },
+  { "key": "Portrait.preview", "pt-BR": "Prévia do retrato", "en": "Portrait preview" },
+  { "key": "Portrait.embedded", "pt-BR": "A imagem local está incorporada à ficha e acompanha a exportação JSON.", "en": "The local image is embedded in the sheet and included in JSON exports." },
+  { "key": "Portrait.linkAlternative", "pt-BR": "Ou cole o link de uma imagem hospedada e clique em Atualizar Imagem.", "en": "Or paste a hosted image URL and click Update Image." },
+  { "key": "Portrait.selected", "pt-BR": "Imagem pronta. Salve a ficha para manter a alteração.", "en": "Image ready. Save the sheet to keep this change." },
+  { "key": "Portrait.removed", "pt-BR": "Imagem removida. Salve a ficha para manter a alteração.", "en": "Image removed. Save the sheet to keep this change." },
+  { "key": "Portrait.invalidLink", "pt-BR": "Informe um link de imagem que comece com https:// ou http://, ou escolha um arquivo do dispositivo.", "en": "Enter an image URL starting with https:// or http://, or choose a file from your device." },
+  { "key": "Portrait.linkError", "pt-BR": "Não foi possível carregar a imagem. Confira o link e sua conexão, ou escolha um arquivo do dispositivo.", "en": "Could not load the image. Check the URL and your connection, or choose a file from your device." }
+]
