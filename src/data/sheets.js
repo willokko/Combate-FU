@@ -47,7 +47,9 @@ export function validateSheet(sheet) {
     if (!Array.isArray(sheet.attacks) || !object(sheet.affinities) || typeof sheet.species !== 'string') throw new Error('Adversário: verifique espécie, ataques e afinidades.');
     for (const key of ['spells', 'actions', 'special']) if (sheet[key] !== undefined && !Array.isArray(sheet[key])) throw new Error(`Adversário: ${key} deve ser uma lista.`);
     for (const key of ['attacks', 'spells', 'actions', 'special']) if (sheet[key]?.some(item => !object(item))) throw new Error(`Adversário: a lista ${key} contém um item inválido.`);
-    for (const key of ['hp', 'mp']) if (sheet.extra?.[key] !== undefined && sheet.extra[key] !== '') integer(sheet.extra[key], `Bônus de ${key}`);
+    // The original NPC editor supports negative adjustments; validate the final
+    // resources below instead of rejecting an otherwise valid exported sheet.
+    for (const key of ['hp', 'mp']) if (sheet.extra?.[key] !== undefined && sheet.extra[key] !== '') integer(sheet.extra[key], `Bônus de ${key}`, -100000000);
     const resources = resourcesFor(sheet, 'npc');
     integer(resources.hp.max, 'PV calculados', 1);
     integer(resources.mp.max, 'PM calculados');

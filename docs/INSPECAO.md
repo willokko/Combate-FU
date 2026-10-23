@@ -21,7 +21,7 @@ Base: `fultimator/fultimator`, branch `main`, commit `5623ae23f5fee41bcb90b57e53
 | Classes, habilidades, magias e conteúdos de suplementos | Dentro do editor de personagem | Componentes e libs originais preservados |
 | Equipamentos, vínculos, notas, companheiros e veículos | Dentro do editor/fichas | Originais preservados; painel de combate reutiliza a ficha compacta |
 | Galeria/editor de adversários | `#/npc-gallery`, `#/npc-gallery/:id` | Originais, persistência local padrão ou Firebase configurado |
-| Compêndio de adversários | `#/npc-compedium` | Busca original; conteúdo local publicado ou serviço Firebase próprio |
+| Compêndio de adversários | `#/npc-compedium` | Catálogo estático da comunidade em PT/EN, busca, filtros, ficha completa, exportação e cópia para biblioteca/combate; busca de fichas locais publicadas preservada em `?source=local` |
 | Itens, armas normais/customizadas, armaduras/escudos, acessórios, arcanos, rituais e projetos | `#/generate` | `generator` e `routes/equip`, preservados |
 | Rolador e rolagens preparadas | `#/roller`, `#/roller/:scope` | Original; resultados locais, compartilhamento exige Firebase |
 | Combate original: estudo, dano/afinidades, configurações, notas, reordenação e rolagens | `#/legacy-combat-sim`, `#/legacy-combat-sim/:id` | Componentes preservados, encontros separados |

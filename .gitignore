@@ -15,6 +15,7 @@
 /build
 /dist
 /tmp/firebase-sockets/
+/tmp/public-compendium/
 firestore-debug.log
 firebase-debug.log
 /.firebase

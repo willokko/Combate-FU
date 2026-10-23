@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import data from "./data.json";
 import combatManagerData from "./combatManager.json";
 import portraitsData from "./portraits.json";
+import compendiumData from "./compendium.json";
 import { codexExtraTranslations } from "../libs/codexExtraClasses.js";
 import { readPreference } from '../data/localStore';
 
@@ -33,6 +34,8 @@ export const languageOptions = [
 const debugMode = false;
 
 const translate = (key) => {
+  const compendium = compendiumData.find(item => item.key === key);
+  if (compendium) return { ...Object.fromEntries(languageOptions.map(({ code }) => [code, compendium.en])), ...compendium };
   const portrait = portraitsData.find(item => item.key === key);
   if (portrait) return { ...Object.fromEntries(languageOptions.map(({ code }) => [code, portrait.en])), ...portrait };
   if (Object.hasOwn(codexExtraTranslations, key)) {

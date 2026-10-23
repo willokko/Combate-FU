@@ -13,6 +13,8 @@ Login com Google e sincronização privada de fichas e encontros: **[configurar 
 
 O novo gerenciador fica em `#/combat-sim`; o simulador anterior continua disponível em `#/legacy-combat-sim`. Os créditos, a licença e o README original seguem abaixo.
 
+O **Compêndio de adversários** inclui 415 fichas públicas em português e 4.061 em inglês, com busca, filtros, ficha completa, exportação e cópia para biblioteca ou combate. O catálogo funciona sem credenciais do Firebase original. Veja [origem, créditos, uso e atualização](docs/COMPENDIO.md).
+
 ## Introduction
 
 An unofficial Fabula Ultima Tool

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Alert, Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControlLabel, MenuItem, Paper, Stack, Tab, Tabs, TextField, Typography } from '@mui/material';
 import { useLocalDatabase } from '../../data/hooks.js';
 import { libraryEntries, findDuplicates, parseSheets, RESOURCE_LABELS, resourcesFor } from '../../data/sheets.js';
-import { transaction } from '../../data/localStore.js';
+import { clone, transaction } from '../../data/localStore.js';
 import { changeEncounter, linkedElsewhere, makeParticipant } from '../../data/encounters.js';
 import { importCandidates } from '../../data/library.js';
 import { readSheetFiles } from '../../data/files.js';
 import { t } from '../../translation/translate';
 
-export default function ParticipantPicker({ open, onClose, encounterId, initialCandidates = [], libraryOnly = false }) {
+export default function ParticipantPicker({ open, onClose, encounterId, newEncounter, initialCandidates = [], libraryOnly = false }) {
   const db = useLocalDatabase();
   const [tab, setTab] = useState(initialCandidates.length || libraryOnly ? 2 : 0);
   const [search, setSearch] = useState('');
@@ -47,6 +47,12 @@ export default function ParticipantPicker({ open, onClose, encounterId, initialC
         }
       };
       if (encounterId && !libraryOnly) changeEncounter(encounterId, t('Participantes adicionados'), mutate);
+      else if (newEncounter && !libraryOnly) transaction(draft => {
+        if (draft.encounters[newEncounter.id]) throw new Error('Este encontro já existe. Reabra a seleção.');
+        const encounter = clone(newEncounter);
+        mutate(encounter, draft);
+        draft.encounters[encounter.id] = encounter;
+      });
       else transaction(draft => mutate(null, draft));
       onClose(true);
     } catch (error) { setError(error.message); }

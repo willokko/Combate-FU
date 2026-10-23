@@ -63,14 +63,19 @@ import Export from "../../components/Export";
 import { useTranslate, languageOptions } from "../../translation/translate";
 
 import ReportContentDialog from "../../components/appbar/ReportContentDialog";
+import CommunityCompendium from './CommunityCompendium.jsx';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
 export default function NpcCompedium() {
   const { t } = useTranslate();
   const [user, loading] = useAuthState(auth);
+  const [params] = useSearchParams();
+
+  if (!remoteEnabled && params.get('source') !== 'local') return <CommunityCompendium />;
 
   return (
     <Layout>
-      {!remoteEnabled && <Paper sx={{ p: 2, mb: 2 }}><Typography>{t('O compêndio compartilhado original depende do Firebase. Nesta instalação, a busca usa apenas adversários publicados na biblioteca local. Para migrar conteúdo, exporte e importe as fichas; consulte a documentação para configurar um serviço remoto próprio.')}</Typography></Paper>}
+      {!remoteEnabled && <Paper sx={{ p: 2, mb: 2 }}><Typography>{t('Compendium.personalExplanation')}</Typography><Button component={Link} to="/npc-compedium">{t('Compendium.back')}</Button></Paper>}
       {loading && <Skeleton />}
 
       {!loading && !user && (
@@ -89,6 +94,7 @@ export default function NpcCompedium() {
 
 function Personal({ user }) {
   const { t } = useTranslate();
+  const navigate = useNavigate();
 
   const [openReportDialog, setOpenReportDialog] = useState(false);
   const [selectedReportNpc, setSelectedReportNpc] = useState({
