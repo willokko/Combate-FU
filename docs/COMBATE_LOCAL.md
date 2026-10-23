@@ -52,6 +52,8 @@ Personagens vinculados recebem a imagem atualizada ao salvar pelo editor. Advers
 
 **Encerrar combate** mantém os recursos finais. **Remover do encontro** também preserva os valores sincronizados e não apaga a ficha. Recuperação de recursos é sempre explícita pelos controles. Fichas independentes podem ser salvas na biblioteca e exportadas atualizadas; para vinculá-las depois, selecione o registro salvo pelo seletor de biblioteca.
 
+Cada lado do encontro usa uma grade fixa de **duas fichas por linha (2 × N)**. No computador, os painéis de heróis e adversários aparecem lado a lado; em telas estreitas, um painel fica abaixo do outro, mantendo duas colunas dentro de cada lado. Os controles se reorganizam dentro das fichas para caber nessa largura. A conferência no navegador usou três personagens e três adversários fictícios em computador e em 390 px; dano aplicado somente ao segundo personagem e recuperação após atualizar a página continuaram preservando as demais fichas.
+
 ## Dados e formatos compatíveis
 
 O original exporta um objeto JSON com `dataType: "pc"` ou `"npc"` (`src/components/Export.tsx`). O exportador em lote de NPCs produz um ZIP de objetos individuais, inclusive sem `dataType`. A importação reconhece esses objetos brutos pela estrutura. Arrays de objetos são uma conveniência adicional desta versão, não um formato de coleção alegado como original.

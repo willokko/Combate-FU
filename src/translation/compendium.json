@@ -1,4 +1,8 @@
 [
+  { "key": "Compendium.copyPage", "pt-BR": "Copiar fichas desta página", "en": "Copy sheets on this page" },
+  { "key": "Compendium.combatPage", "pt-BR": "Adicionar esta página ao combate", "en": "Add this page to combat" },
+  { "key": "Compendium.reportSource", "pt-BR": "Esta ficha é uma cópia do compêndio original. Abra a ficha na origem para usar o canal de denúncia do Fultimator. Nenhuma denúncia foi enviada por este aplicativo.", "en": "This sheet is a copy of the original compendium. Open the source sheet to use Fultimator's reporting channel. This app has not sent any report." },
+  { "key": "Compendium.openSource", "pt-BR": "Abrir ficha original", "en": "Open original sheet" },
   { "key": "Compendium.title", "pt-BR": "Compêndio de adversários", "en": "Adversary Compendium" },
   { "key": "Compendium.explanation", "pt-BR": "Fichas públicas da comunidade Fultimator em português e inglês. Consulte os detalhes, exporte o JSON ou copie para sua biblioteca. As cópias podem ser editadas e usadas no combate sem alterar o catálogo original.", "en": "Public Fultimator community sheets in Portuguese and English. View details, export JSON, or copy sheets to your library. Copies can be edited and used in combat without changing the original catalog." },
   { "key": "Compendium.ready", "pt-BR": "fichas prontas", "en": "ready-to-use sheets" },

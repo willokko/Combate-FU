@@ -13,7 +13,7 @@ Login com Google e sincronização privada de fichas e encontros: **[configurar 
 
 O novo gerenciador fica em `#/combat-sim`; o simulador anterior continua disponível em `#/legacy-combat-sim`. Os créditos, a licença e o README original seguem abaixo.
 
-O **Compêndio de adversários** inclui 415 fichas públicas em português e 4.061 em inglês, com busca, filtros, ficha completa, exportação e cópia para biblioteca ou combate. O catálogo funciona sem credenciais do Firebase original. Veja [origem, créditos, uso e atualização](docs/COMPENDIO.md).
+O **Compêndio de adversários** inclui 415 fichas públicas em português e 4.061 em inglês, com a apresentação original do Fultimator: ícones por espécie, filtros e seis fichas abertas na própria página. O catálogo permite exportação e cópia para biblioteca ou combate sem credenciais do Firebase original. No combate, cada lado organiza seus participantes em uma grade fixa de duas colunas. Veja [origem, créditos, uso e atualização](docs/COMPENDIO.md).
 
 ## Introduction
 

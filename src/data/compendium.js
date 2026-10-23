@@ -1,13 +1,27 @@
 import { validateSheet } from './sheets.js';
 
 export const normalizeSearch = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase();
-export function searchCompendium(entries, { search = '', language = '', species = '', rank = '', minLevel = 1, maxLevel = 999 } = {}) {
+export function searchCompendium(entries, { search = '', language = '', species = '', rank = '', minLevel = 1, maxLevel = 999, order = 'name' } = {}) {
   const terms = normalizeSearch(search).trim().split(/\s+/).filter(Boolean);
   return entries.filter(entry => (!language || entry.language === language)
     && (!species || entry.species === species) && (!rank || entry.rank === rank)
     && entry.lvl >= Number(minLevel || 1) && entry.lvl <= Number(maxLevel || 999)
     && terms.every(term => normalizeSearch(`${entry.name} ${entry.createdBy}`).includes(term)))
-    .sort((a, b) => a.name.localeCompare(b.name, 'pt-BR') || a.sourceId.localeCompare(b.sourceId));
+    .sort((a, b) => {
+      if (order === 'level' && a.lvl !== b.lvl) return a.lvl - b.lvl;
+      if (order === 'published' || order === 'level') {
+        const date = (b.publishedAt?.seconds || 0) - (a.publishedAt?.seconds || 0)
+          || (b.publishedAt?.nanoseconds || 0) - (a.publishedAt?.nanoseconds || 0);
+        if (date) return date;
+      }
+      return a.name.localeCompare(b.name, 'pt-BR') || a.sourceId.localeCompare(b.sourceId);
+    });
+}
+
+export function compendiumShareUrl(currentUrl, sourceId) {
+  const url = new URL(currentUrl);
+  url.hash = `/npc-compedium?npc=${encodeURIComponent(sourceId)}`;
+  return url.href;
 }
 
 export function createCompendiumClient({ base = import.meta.env?.BASE_URL || '/', fetcher = globalThis.fetch } = {}) {

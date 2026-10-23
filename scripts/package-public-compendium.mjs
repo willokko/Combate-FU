@@ -25,7 +25,7 @@ for (let offset = 0; offset < entries.length; offset += 100) {
     const { resources } = validateSheet(sheet);
     summaries.push({ sourceId, pack, name: sheet.name, lvl: Number(sheet.lvl), species: sheet.species,
       rank: sheet.rank || 'soldier', language: sheet.language || '', createdBy: sheet.createdBy || '',
-      hp: resources.hp.max, mp: resources.mp.max });
+      hp: resources.hp.max, mp: resources.mp.max, publishedAt: sheet.publishedAt || null });
   }
 }
 const catalog = { version: 1, source: captured.source, sourceUrl: captured.sourceUrl,

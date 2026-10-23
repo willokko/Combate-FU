@@ -2,7 +2,7 @@ import test, { beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import { decodeFirestore } from '../scripts/capture-public-compendium.mjs';
-import { createCompendiumClient, searchCompendium } from '../src/data/compendium.js';
+import { compendiumShareUrl, createCompendiumClient, searchCompendium } from '../src/data/compendium.js';
 import { importCandidates } from '../src/data/library.js';
 import { createEncounter, makeParticipant, operate } from '../src/data/encounters.js';
 import { parseSheets, validateSheet } from '../src/data/sheets.js';
@@ -25,9 +25,29 @@ test('catálogo contém somente fichas públicas em português e inglês, todas 
     assert.ok(['pt-BR', 'en'].includes(sheet.language)); assert.equal(sheet.published, true);
     assert.equal(candidate.kind, 'npc'); assert.equal(sheet.name, entry.name);
     assert.equal(sheet.createdBy || '', entry.createdBy);
+    assert.deepEqual(sheet.publishedAt || null, entry.publishedAt);
     assert.equal(candidate.resources.hp.max, entry.hp); assert.equal(candidate.resources.mp.max, entry.mp);
   }
   assert.deepEqual(new Set(readdirSync(directory).filter(name => name.startsWith('pack-'))), new Set(packs.keys()));
+});
+
+test('ordenação original usa publicação decrescente e nível crescente quando filtrado', () => {
+  const entries = [
+    { sourceId: 'old', name: 'A', lvl: 20, publishedAt: { seconds: 10, nanoseconds: 0 } },
+    { sourceId: 'new', name: 'B', lvl: 10, publishedAt: { seconds: 30, nanoseconds: 1 } },
+    { sourceId: 'same-second', name: 'C', lvl: 5, publishedAt: { seconds: 30, nanoseconds: 2 } },
+  ];
+  assert.deepEqual(searchCompendium(entries, { order: 'published' }).map(e => e.sourceId), ['same-second', 'new', 'old']);
+  assert.deepEqual(searchCompendium(entries, { order: 'level', minLevel: 10 }).map(e => e.sourceId), ['new', 'old']);
+  assert.equal(entries[0].sourceId, 'old');
+});
+
+test('link compartilhado aponta para o catálogo público sob a base Pages, sem IDs privados', () => {
+  const url = new URL(compendiumShareUrl('https://willokko.github.io/Combate-FU/#/npc-compedium?source=local', 'public-id'));
+  assert.equal(url.pathname, '/Combate-FU/');
+  assert.equal(url.hash, '#/npc-compedium?npc=public-id');
+  assert.ok(!url.href.includes('npc-gallery'));
+  assert.ok(!url.href.includes('source=local'));
 });
 
 test('decodificação mantém campos desconhecidos, arrays e precisão de timestamps do Firestore', () => {
