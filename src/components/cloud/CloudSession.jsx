@@ -65,7 +65,7 @@ export default function CloudSession({ children }) {
   return <CloudContext.Provider value={session}><React.Fragment key={scope}>{children}</React.Fragment></CloudContext.Provider>;
 }
 
-export function CloudAccount() {
+export function CloudAccount({ hideControls = false }) {
   const session = useCloudSession();
   const { t } = useTranslate();
   const [error, setError] = useState(''), [busy, setBusy] = useState(false);
@@ -91,11 +91,12 @@ export function CloudAccount() {
     conflict: 'Conflito entre dispositivos', error: 'Alterações locais preservadas · confira a sincronização',
     editing: 'Edição aberta · salve ou descarte a ficha para sincronizar',
   };
+  if (hideControls && !error && !session.error && session.state !== 'conflict') return null;
   return <Stack spacing={1} sx={{ my: 1 }}>
-    <Stack direction="row" gap={1} flexWrap="wrap" alignItems="center">
+    {!hideControls && <Stack direction="row" gap={1} flexWrap="wrap" alignItems="center">
       <Typography variant="body2" role="status">{session.user ? `${session.user.email || session.user.displayName} · ` : ''}{t(labels[session.state])}</Typography>
       {session.user ? <><Button size="small" onClick={() => session.engine?.sync()} disabled={session.state === 'syncing'}>{t('Sincronizar agora')}</Button><Button size="small" onClick={logout} disabled={busy}>{t('Sair da conta')}</Button></> : <Button variant="outlined" size="small" onClick={login} disabled={busy}>{t('Entrar com Google')}</Button>}
-    </Stack>
+    </Stack>}
     {(error || session.error) && <Alert severity="warning">{t(error || session.error)}</Alert>}
     {session.state === 'conflict' && <Alert severity="warning">
       {t('A biblioteca foi alterada em outro dispositivo. A escolha vale para a biblioteca e os encontros completos. Ambas as versões serão guardadas neste navegador antes da substituição.')}

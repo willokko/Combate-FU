@@ -335,6 +335,7 @@ function Personal({ user }) {
         sx={{
           mb: 3,
           backgroundColor: "rgb(22, 163, 74)", // emerald-600 equivalent
+          display: "none",
           "& .MuiAlert-icon": {
             color: "#fff",
           },
