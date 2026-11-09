@@ -33,7 +33,7 @@ import { useCustomTheme } from "../../hooks/useCustomTheme";
 import { useTheme } from "@mui/material/styles";
 
 function NpcPretty(
-  { npc, study, npcImage, collapse, onClick = () => {} },
+  { npc, study, npcImage, collapse, showNotes = true, onClick = () => {} },
   ref
 ) {
   const { t } = useTranslate();
@@ -61,7 +61,7 @@ function NpcPretty(
                 <Special npc={npc} />
                 <RareGear npc={npc} />
                 <Equip npc={npc} />
-                <Notes npc={npc} />
+                {showNotes && <Notes npc={npc} />}
               </>
             ) : (
               <Grid container>
@@ -1201,7 +1201,7 @@ function Actions({ npc }) {
   );
 }
 
-function Notes({ npc }) {
+export function Notes({ npc }) {
   const { t } = useTranslate();
   const theme = useCustomTheme();
   const background =

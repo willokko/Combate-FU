@@ -4,7 +4,7 @@ import { Close, ExpandMore } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import PlayerCardSheet from '../player/playerSheet/compact/PlayerSheetCompact.jsx';
 import GenericRolls from '../player/playerSheet/GenericRolls.jsx';
-import NpcPretty from '../npc/Pretty.jsx';
+import NpcPretty, { Notes as NpcNotes } from '../npc/Pretty.jsx';
 import RollsTab from '../combatSim/npcDetail/RollsTab.jsx';
 import StandardRollsSection from '../combatSim/npcDetail/StandardRollsSection.jsx';
 import { applyResources, CONDITIONS, exportSheet, RESOURCE_LABELS } from '../../data/sheets.js';
@@ -52,6 +52,7 @@ export default function ParticipantDetails({ participant: p, onClose, onChange, 
         <TextField label={t('Efeitos temporários e duração')} multiline minRows={2} value={p.effects} onChange={e => onChange({ effects: e.target.value })} />
         <TextField label={t('Notas temporárias')} multiline minRows={2} value={p.notes} onChange={e => onChange({ notes: e.target.value })} />
       </Stack>
+      {p.kind === 'npc' && sheet.notes?.length > 0 && <Box component="section" aria-label={t('Notes')} sx={{ mb: 2, overflowWrap: 'anywhere' }}><NpcNotes npc={sheet} /></Box>}
       <Alert severity="info" sx={{ mb: 2 }}>{t('Rolagens consultam a ficha e as condições. Custos, dano e efeitos de habilidades são aplicados pelos controles manuais.')}</Alert>
       {p.kind === 'pc' ? <>
         <GenericRolls player={player} />
@@ -60,7 +61,7 @@ export default function ParticipantDetails({ participant: p, onClose, onChange, 
         {roll && <Alert sx={{ my: 1 }} role="status">{roll}</Alert>}
         <StandardRollsSection selectedNPC={sheet} calcAttr={(_a, _b, key) => attr(key)} handleRoll={(a, b, labelA, labelB) => { const results = [random(`d${a}`), random(`d${b}`)]; setRoll(`${labelA} + ${labelB}: ${results.join(' + ')} = ${results[0] + results[1]}`); }} />
         <RollsTab manualMode selectedNPC={{ ...sheet, combatStats: { currentHp: p.resources.hp.current, currentMp: p.resources.mp.current } }} handleAttack={attack => rollAttack(attack)} handleSpell={spell => spell.type === 'offensive' ? rollAttack(spell, true) : onNotify(t('Consulte o efeito da magia na ficha e aplique-o manualmente.'))} setClickedData={() => {}} setOpen={() => onNotify(t('Consulte o efeito da magia na ficha e aplique-o manualmente.'))} />
-        <NpcPretty npc={sheet} collapse />
+        <NpcPretty npc={sheet} collapse showNotes={false} />
       </>}
       <Accordion sx={{ my: 2 }}><AccordionSummary expandIcon={<ExpandMore />}>{t('Todos os dados originais (JSON)')}</AccordionSummary><AccordionDetails><Box component="pre" sx={{ overflow: 'auto', maxHeight: 400, whiteSpace: 'pre-wrap', overflowWrap: 'anywhere', fontSize: 12 }}>{JSON.stringify(exportSheet(p), null, 2)}</Box></AccordionDetails></Accordion>
       <Button color="error" onClick={onRemove}>{t('Remover do encontro')}</Button>
